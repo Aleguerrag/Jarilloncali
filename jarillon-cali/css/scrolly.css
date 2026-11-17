@@ -429,3 +429,34 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   #muro-svg .svg-label { font-size: 30px; }
   #muro-svg .svg-small { font-size: 21px; }
 }
+
+/* ---------- todas las cajas como notas pegadas con cinta ---------- */
+.cinta { position: relative; }
+.cinta::before, .cifra::before, .chat::before, .testimonios figure::before, .hud > div::before {
+  content: ""; position: absolute; top: -10px; left: 50%; width: 78px; height: 19px; margin-left: -39px;
+  background: rgba(242, 194, 48, .78); transform: rotate(-3deg); box-shadow: 0 1px 2px rgba(20, 20, 20, .12);
+}
+.cifras { background: none; border: 0; gap: 2.2rem 1.6rem; padding-top: .8rem; }
+.cifra { position: relative; box-shadow: var(--sombra); transform: rotate(-.8deg); transition: transform .3s var(--ease); }
+.cifra:nth-child(3n+2) { transform: rotate(.9deg); }
+.cifra:nth-child(3n+2)::before { transform: rotate(3deg); margin-left: -28px; }
+.cifra:nth-child(4n) { transform: rotate(-.3deg); background: #fffaf0; }
+.cifra:nth-child(4n)::before { background: rgba(76, 143, 176, .55); }
+.cifra:hover { transform: rotate(0) translateY(-4px); }
+.chat { position: relative; border-top: 0; transform: rotate(-.4deg); }
+.chat::before { width: 110px; margin-left: -55px; }
+.testimonios figure { position: relative; border-top: 0; transform: rotate(-.6deg); }
+.testimonios figure:nth-child(even) { transform: rotate(.7deg); }
+.hud > div { position: relative; }
+.hud > div::before { width: 46px; height: 13px; margin-left: -23px; top: -7px; background: rgba(192, 57, 43, .75); }
+.quote { position: relative; transform: rotate(.5deg); box-shadow: 0 6px 14px -8px rgba(20, 20, 20, .4); }
+.quote::before { content: ""; position: absolute; top: -8px; left: 14px; width: 54px; height: 15px; background: rgba(250, 247, 240, .7); transform: rotate(-6deg); }
+.archivo { background: var(--papel-2); box-shadow: var(--sombra); padding: 1.4rem 1.5rem; position: relative; transform: rotate(.3deg); }
+.archivo::before { content: ""; position: absolute; top: -10px; left: 50%; width: 78px; height: 19px; margin-left: -39px; background: rgba(242, 194, 48, .78); transform: rotate(2deg); }
+.cinta-race { background: var(--papel-2); box-shadow: var(--sombra); padding: 1.6rem 1.8rem 2.2rem; position: relative; transform: rotate(-.4deg); }
+.cinta-race::before { content: ""; position: absolute; top: -10px; left: 50%; width: 90px; height: 20px; margin-left: -45px; background: rgba(242, 194, 48, .78); transform: rotate(-2deg); }
+@media (max-width: 959px) { .cinta-race { padding: 1.1rem 1rem 1.6rem; } }
+@media (max-width: 959px) {
+  .race__future { display: none; }
+  .race__year { font-size: 3.4rem; }
+}
