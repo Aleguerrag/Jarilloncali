@@ -1,0 +1,3 @@
+Pon aquí las fotos con estos nombres exactos:
+hero-rio.jpg, hero-archivo.jpg, hero-barrio.jpg, cronica-escombros.jpg
+Ver README.md, sección 3.
