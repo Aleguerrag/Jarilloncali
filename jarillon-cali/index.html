@@ -15,17 +15,16 @@
 </head>
 <body>
 
-<!-- ================= BARRA DE PROGRESO ================= -->
 <header class="bar" id="bar">
   <a class="bar__logo" href="#inicio">El <span>Jarillón</span></a>
   <ol class="bar__caps" id="bar-caps" aria-label="Capítulos">
-    <li><a href="#muro" data-cap="muro">El muro</a></li>
-    <li><a href="#mapa" data-cap="mapa">Dónde</a></li>
-    <li><a href="#historia" data-cap="historia">Historia</a></li>
-    <li><a href="#anatomia" data-cap="anatomia">Cómo falla</a></li>
-    <li><a href="#cede" data-cap="cede">Si cede</a></li>
-    <li><a href="#brecha" data-cap="brecha">La brecha</a></li>
-    <li><a href="#escombros" data-cap="escombros">Escombros</a></li>
+    <li><a href="#cap-muro" data-cap="muro"><i>01</i> El muro</a></li>
+    <li><a href="#cap-mapa" data-cap="mapa"><i>02</i> Dónde</a></li>
+    <li><a href="#cap-historia" data-cap="historia"><i>03</i> Historia</a></li>
+    <li><a href="#cap-anatomia" data-cap="anatomia"><i>04</i> Cómo falla</a></li>
+    <li><a href="#cap-cede" data-cap="cede"><i>05</i> Si cede</a></li>
+    <li><a href="#cap-brecha" data-cap="brecha"><i>06</i> La brecha</a></li>
+    <li><a href="#cap-escombros" data-cap="escombros"><i>07</i> Escombros</a></li>
   </ol>
   <div class="bar__tools">
     <button class="bar__btn" id="sound" type="button" aria-pressed="false" title="Activar sonido del río">
@@ -39,13 +38,12 @@
 
 <main>
 
-<!-- ================= 0 · APERTURA ================= -->
-<section class="scene scene--intro dark" id="inicio" data-scene="intro">
+<!-- ============ APERTURA · lluvia y agua que sube con el scroll ============ -->
+<section class="scene scene--intro dark" id="inicio" data-scene="intro" data-scrub="intro">
   <div class="stage">
+    <canvas id="rain" aria-hidden="true"></canvas>
     <svg class="intro-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="g-agua" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4c8fb0"/><stop offset="1" stop-color="#1d4a60"/></linearGradient>
-      </defs>
+      <defs><linearGradient id="g-agua" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4c8fb0"/><stop offset="1" stop-color="#1d4a60"/></linearGradient></defs>
       <g class="city">
         <path d="M0 400V340h26v-22h20v22h18v-40h30v40h14v-28h24v28h20v-52h26v52h22v-30h18v30h22v-20h20v20" fill="#26221d"/>
         <g fill="#f2c230" class="lights"><rect x="72" y="314" width="4" height="5"/><rect x="82" y="326" width="4" height="5"/><rect x="152" y="300" width="4" height="5"/><rect x="160" y="320" width="4" height="5"/><rect x="30" y="350" width="4" height="5"/><rect x="200" y="378" width="4" height="5"/><rect x="118" y="352" width="4" height="5"/></g>
@@ -68,7 +66,7 @@
     <div class="step step--center" data-step="0">
       <p class="kicker kicker--light">Reportaje transmedia · Periodismo e IA · UAO 2026</p>
       <p class="intro-line">En 2011, al río Cauca le faltaron <strong>10 centímetros</strong>.</p>
-      <p class="scroll-hint" aria-hidden="true">Desliza ↓</p>
+      <p class="scroll-hint" aria-hidden="true">Desliza para empezar</p>
     </div>
     <div class="step step--center" data-step="1">
       <p class="intro-line">Diez centímetros para pasar por encima del muro que protege a <strong>más de 900.000 caleños</strong>.</p>
@@ -82,315 +80,400 @@
   </div>
 </section>
 
-<!-- ================= 1 · EL MURO ================= -->
-<section class="scene" id="muro" data-scene="muro">
+<!-- ============ 01 · EL MURO · cámara que se aleja + gráfico de unidades ============ -->
+<section class="opener" id="cap-muro" data-cap="muro">
+  <div class="opener__in">
+    <span class="opener__num">01</span>
+    <p class="opener__kicker">Capítulo uno</p>
+    <h2 class="opener__title">El muro</h2>
+    <p class="opener__dek">Qué es el jarillón y quién vive encima.</p>
+  </div>
+</section>
+<section class="scene scene--full" data-scene="muro" data-cap="muro">
   <div class="stage">
-    <svg viewBox="0 0 800 480" aria-hidden="true">
-      <rect x="0" y="0" width="800" height="480" fill="none"/>
-      <g data-s="2-" class="fade">
-        <path d="M0 380V320h30v-24h22v24h20v-44h34v44h16v-30h26v30h22v-56h28v56h22v-34h20v34h28v-18h22v18" fill="#c9b892" stroke="#141414" stroke-width="2"/>
-        <text x="120" y="420" class="svg-label" text-anchor="middle">Oriente de Cali</text>
-        <text x="120" y="442" class="svg-small" text-anchor="middle">+900.000 personas</text>
-      </g>
-      <g class="agua-muro">
+    <svg id="muro-svg" viewBox="340 178 150 90" aria-hidden="true">
+      <g id="muro-escena" data-s="0-3">
+        <g data-s="3" class="fade">
+          <path d="M0 380V320h30v-24h22v24h20v-44h34v44h16v-30h26v30h22v-56h28v56h22v-34h20v34h28v-18h22v18" fill="#c9b892" stroke="#141414" stroke-width="2"/>
+          <text x="120" y="420" class="svg-label" text-anchor="middle">Oriente de Cali</text>
+          <text x="120" y="442" class="svg-small" text-anchor="middle">+900.000 personas</text>
+        </g>
         <rect id="muro-agua" x="560" y="330" width="240" height="50" fill="#4c8fb0" opacity=".9"/>
-        <text x="690" y="420" class="svg-label" text-anchor="middle" data-s="1-">Río Cauca</text>
-        <g data-s="1" class="fade"><line x1="570" y1="254" x2="790" y2="254" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 5"/><text x="786" y="246" class="svg-small svg-alert" text-anchor="end">2011: a 10 cm de la corona</text></g>
+        <text x="690" y="420" class="svg-label" text-anchor="middle" data-s="2-">Río Cauca</text>
+        <g data-s="2" class="fade"><line x1="570" y1="254" x2="790" y2="254" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 5"/><text x="786" y="246" class="svg-small svg-alert" text-anchor="end">2011: a 10 cm de la corona</text></g>
+        <polygon points="270,380 365,250 475,250 570,380" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
+        <line x1="0" y1="380" x2="800" y2="380" stroke="#141414" stroke-width="2.5"/>
+        <g data-s="1" class="fade">
+          <path class="draw" pathLength="1" d="M365 236 h110" stroke="#141414" stroke-width="1.5"/>
+          <text x="420" y="228" class="svg-small" text-anchor="middle">corona</text>
+          <path class="draw" pathLength="1" d="M588 250 v130" stroke="#141414" stroke-width="1.5"/><text x="596" y="320" class="svg-small">≈3,5 m</text>
+          <path class="draw" pathLength="1" d="M270 398 h300" stroke="#141414" stroke-width="1.5"/><text x="420" y="416" class="svg-small" text-anchor="middle">≈60 m de base (hasta 100 m)</text>
+        </g>
+        <g class="casas">
+          <path d="M372 250v-20l12-11 12 11v20z" fill="#f3eee3" stroke="#141414" stroke-width="1.5"/>
+          <rect x="381" y="236" width="6" height="14" fill="#141414"/>
+          <path d="M402 250v-26l15-13 15 13v26z" fill="#f2c230" stroke="#141414" stroke-width="1.5"/>
+          <rect x="411" y="230" width="6" height="6" fill="#141414"/><rect x="420" y="238" width="6" height="12" fill="#141414"/>
+          <path d="M438 250v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="1.5"/>
+          <path d="M398 250 q2 -8 4 0" stroke="#2f5d2e" stroke-width="2" fill="none"/>
+          <line x1="462" y1="250" x2="462" y2="226" stroke="#141414" stroke-width="1"/><path d="M462 226 h8" stroke="#a63a2b" stroke-width="2"/>
+        </g>
       </g>
-      <polygon points="270,380 365,250 475,250 570,380" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
-      <line x1="0" y1="380" x2="800" y2="380" stroke="#141414" stroke-width="2.5"/>
-      <g data-s="0" class="fade">
-        <path d="M365 236 h110" stroke="#141414" stroke-width="1.5"/><path d="M365 231v10M475 231v10" stroke="#141414" stroke-width="1.5"/>
-        <text x="420" y="226" class="svg-small" text-anchor="middle">corona</text>
-        <path d="M584 250 v130" stroke="#141414" stroke-width="1.5"/><text x="592" y="320" class="svg-small">≈3,5 m</text>
-        <path d="M270 398 h300" stroke="#141414" stroke-width="1.5"/><text x="420" y="416" class="svg-small" text-anchor="middle">≈60 m de base (hasta 100 m)</text>
-      </g>
-      <g data-s="3-" class="pop casas">
-        <path d="M372 250v-20l12-11 12 11v20z" fill="#f3eee3" stroke="#141414" stroke-width="2"/>
-        <path d="M402 250v-26l15-13 15 13v26z" fill="#f2c230" stroke="#141414" stroke-width="2"/>
-        <path d="M438 250v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="2"/>
-      </g>
-      <g data-s="4" class="fade">
-        <text x="420" y="196" class="svg-hand" text-anchor="middle">3.132 hogares siguen aquí</text>
-      </g>
+      <g id="units" data-s="4-"></g>
     </svg>
   </div>
   <div class="steps">
     <div class="step" data-step="0"><div class="card">
-      <p class="kicker">Capítulo 1 · El muro</p>
-      <h2>Esto es el jarillón.</h2>
-      <p>Un dique de tierra de unos 3,5 metros de alto que corre <b class="count" data-to="26.1" data-dec="1" data-suf=" km">26,1 km</b> junto al río Cauca y sus canales. Los caleños le dicen jarillón.</p>
-      <p class="src" data-f="alc2022"></p>
+      <h3>Esto parece una cuadra cualquiera de Cali.</h3>
+      <p>Casas, puertas y ventanas, como en cualquier barrio. Pero el terreno sobre el que están no es un terreno cualquiera.</p>
     </div></div>
     <div class="step" data-step="1"><div class="card">
-      <h2>De un lado, el río.</h2>
+      <h3>Están construidas encima de un muro.</h3>
+      <p>El jarillón es un dique de tierra de unos 3,5 metros de alto que corre <b class="count" data-to="26.1" data-dec="1" data-suf=" km">26,1 km</b> junto al río Cauca y sus canales.</p>
+      <p class="src" data-f="alc2022"></p>
+    </div></div>
+    <div class="step" data-step="2"><div class="card">
+      <h3>De un lado está el río.</h3>
       <p>En la ola invernal de 2010-2011, el Cauca subió hasta quedar a <b>10 centímetros</b> de la corona, el borde superior del muro.</p>
       <p class="src" data-f="alcPlan"></p>
     </div></div>
-    <div class="step" data-step="2"><div class="card">
-      <h2>Del otro, el oriente de Cali.</h2>
-      <p>Barrios, colegios, plantas de agua y el sistema de transporte. Según la Alcaldía, <b class="count" data-to="900000" data-pre="+">+900.000</b> personas dependen de que el muro aguante.</p>
+    <div class="step" data-step="3"><div class="card">
+      <h3>Del otro, la ciudad.</h3>
+      <p>Barrios, colegios, plantas de agua y transporte. Según la Alcaldía, <b class="count" data-to="900000" data-pre="+">+900.000</b> personas dependen de que el muro aguante.</p>
       <p class="src" data-f="alcTramo6"></p>
     </div></div>
-    <div class="step" data-step="3"><div class="card">
-      <h2>Y encima del muro, casas.</h2>
-      <p>Después de la emergencia se censaron <b class="count" data-to="8777">8.777</b> hogares viviendo sobre el dique. Cada casa trae cimientos, pozos y excavaciones dentro de la estructura que protege a la ciudad.</p>
+    <div class="step" data-step="4"><div class="card">
+      <h3><b class="count" data-to="8777">8.777</b> hogares vivían sobre el dique.</h3>
+      <p>Es el censo que se hizo después de la emergencia de 2010-2011. Cada casita del dibujo representa unos 88 hogares.</p>
       <p class="src" data-f="pais2026"></p>
     </div></div>
-    <div class="step" data-step="4"><div class="card">
-      <h2>Quince años después, <mark>3.132</mark> hogares siguen ahí.</h2>
-      <p>Para febrero de 2026 se habían reasentado 5.645 hogares. Esta es la historia de cómo una obra de ingeniería se volvió barrio, y de lo que está en juego si falla.</p>
+    <div class="step" data-step="5"><div class="card">
+      <h3>Quince años después, <mark>3.132</mark> siguen ahí.</h3>
+      <p>Para febrero de 2026 se habían reasentado 5.645 hogares. Las casas grises ya salieron; las amarillas todavía viven sobre el muro.</p>
       <p class="src" data-f="pais2026"></p>
     </div></div>
   </div>
 </section>
 
-<!-- ================= 2 · MAPA ================= -->
-<section class="scene" id="mapa" data-scene="mapa">
+<!-- ============ 02 · DÓNDE · el muro se dibuja al ritmo del scroll ============ -->
+<section class="opener" id="cap-mapa" data-cap="mapa">
+  <div class="opener__in">
+    <span class="opener__num">02</span>
+    <p class="opener__kicker">Capítulo dos</p>
+    <h2 class="opener__title">Dónde está</h2>
+    <p class="opener__dek">26,1 kilómetros entre la ciudad y el río.</p>
+  </div>
+</section>
+<section class="scene scene--right" data-scene="mapa" data-cap="mapa" data-scrub="mapa">
   <div class="stage">
     <svg viewBox="0 0 600 640" aria-hidden="true">
-      <path d="M0 0 L120 0 C 90 120, 140 220, 95 330 S 120 520, 80 640 L0 640 Z" fill="#7f9a6a" opacity=".55"/>
-      <text x="30" y="300" class="svg-small" transform="rotate(-90 30 300)">Farallones</text>
-      <path d="M150 70 C 260 60, 380 90, 430 140 C 470 260, 460 420, 400 540 C 320 600, 210 590, 150 540 C 120 420, 130 200, 150 70 Z" fill="#e3d3b4" stroke="#141414" stroke-width="2"/>
-      <text x="230" y="300" class="svg-label">Cali</text>
-      <path data-s="3-" class="fade" d="M330 120 C 400 140, 445 230, 445 330 C 440 430, 420 500, 380 535 C 340 520, 320 400, 320 300 C 315 220, 315 150, 330 120 Z" fill="#f2c230" opacity=".55"/>
-      <text data-s="3-" class="fade svg-label" x="345" y="330">Oriente</text>
-      <path d="M520 0 C 480 100, 500 180, 470 260 S 480 420, 450 520 S 470 600, 440 640" fill="none" stroke="#2f6f8f" stroke-width="16" stroke-linecap="round"/>
-      <text x="540" y="380" class="svg-label svg-rio" transform="rotate(80 540 380)">Río Cauca</text>
+      <path d="M0 0 L120 0 C 90 120, 140 220, 95 330 S 120 520, 80 640 L0 640 Z" fill="#9db08a"/>
+      <text x="40" y="330" class="svg-small" transform="rotate(-90 40 330)">Cordillera Occidental</text>
+      <path d="M150 70 C 260 60, 380 90, 430 140 C 470 260, 460 420, 400 540 C 320 600, 210 590, 150 540 C 120 420, 130 200, 150 70 Z" fill="#e8dcc3" stroke="#141414" stroke-width="2"/>
+      <g opacity=".25" stroke="#141414" stroke-width="1"><path d="M170 160H420M160 240H440M160 320H450M165 400H440M180 480H410M220 90V570M290 80V580M360 90V560"/></g>
+      <text x="215" y="300" class="svg-label">Cali</text>
+      <path data-s="3-" class="fade" d="M330 120 C 400 140, 445 230, 445 330 C 440 430, 420 500, 380 535 C 340 520, 320 400, 320 300 C 315 220, 315 150, 330 120 Z" fill="#f2c230" opacity=".6"/>
+      <text data-s="3-" class="fade svg-label" x="340" y="330">Oriente</text>
+      <path d="M520 0 C 480 100, 500 180, 470 260 S 480 420, 450 520 S 470 600, 440 640" fill="none" stroke="#2f6f8f" stroke-width="18" stroke-linecap="round"/>
+      <path class="river-flow" d="M520 0 C 480 100, 500 180, 470 260 S 480 420, 450 520 S 470 600, 440 640" fill="none" stroke="#9cc7dc" stroke-width="2" stroke-dasharray="6 18"/>
+      <text x="548" y="380" class="svg-label svg-rio" transform="rotate(80 548 380)">Río Cauca</text>
       <path d="M150 100 C 230 110, 300 110, 470 110" fill="none" stroke="#4c8fb0" stroke-width="6"/>
       <text x="180" y="94" class="svg-small">río Cali</text>
-      <path class="draw" data-s="1-" pathLength="1" d="M462 140 C 470 220, 452 300, 456 380 S 440 480, 432 540" fill="none" stroke="#141414" stroke-width="7" stroke-linecap="round"/>
-      <path class="draw" data-s="2-" pathLength="1" d="M432 540 C 370 560, 300 560, 220 548" fill="none" stroke="#a63a2b" stroke-width="7" stroke-linecap="round"/>
-      <path class="draw" data-s="2-" pathLength="1" d="M462 118 C 420 122, 390 122, 360 122" fill="none" stroke="#a63a2b" stroke-width="7" stroke-linecap="round"/>
-      <g data-s="1-" class="fade"><rect x="300" y="250" width="132" height="26" fill="#141414"/><text x="366" y="268" class="svg-tag" text-anchor="middle">Aguablanca · 17 km</text></g>
-      <g data-s="2-" class="fade"><rect x="200" y="566" width="228" height="26" fill="#a63a2b"/><text x="314" y="584" class="svg-tag" text-anchor="middle">Canal Interceptor Sur · 6,7 km</text>
-        <rect x="290" y="128" width="128" height="26" fill="#a63a2b"/><text x="354" y="146" class="svg-tag" text-anchor="middle">Río Cali · 2 km</text></g>
-      <g data-s="3-" class="pop"><circle cx="470" cy="300" r="12" fill="#2f6f8f" stroke="#141414" stroke-width="2"/><path d="M470 292c0 0-6 8-6 11a6 6 0 0012 0c0-3-6-11-6-11z" fill="#fff"/>
+      <path id="d-agua" class="scrub-draw" pathLength="1" d="M462 140 C 470 220, 452 300, 456 380 S 440 480, 432 540" fill="none" stroke="#141414" stroke-width="8" stroke-linecap="round"/>
+      <path id="d-cis" class="scrub-draw" pathLength="1" d="M432 540 C 370 560, 300 560, 220 548" fill="none" stroke="#a63a2b" stroke-width="8" stroke-linecap="round"/>
+      <path id="d-cali" class="scrub-draw" pathLength="1" d="M462 118 C 420 122, 390 122, 360 122" fill="none" stroke="#a63a2b" stroke-width="8" stroke-linecap="round"/>
+      <circle id="d-tip" r="9" fill="#f2c230" stroke="#141414" stroke-width="3" cx="462" cy="140"/>
+      <g data-s="3-" class="pop"><circle cx="470" cy="300" r="13" fill="#2f6f8f" stroke="#141414" stroke-width="2"/><path d="M470 291c0 0-6 8-6 11a6 6 0 0012 0c0-3-6-11-6-11z" fill="#fff"/>
         <text x="350" y="232" class="svg-small">Puerto Mallarino</text></g>
+      <g class="hud-svg"><rect x="160" y="16" width="180" height="56" fill="#141414"/><text x="174" y="38" class="svg-tag svg-tag--dim">KILÓMETROS DE DIQUE</text><text id="km-hud" x="174" y="64" class="svg-km">0,0 km</text></g>
       <text x="300" y="630" class="svg-small" text-anchor="middle">Esquema ilustrativo, no a escala</text>
     </svg>
   </div>
   <div class="steps">
     <div class="step" data-step="0"><div class="card">
-      <p class="kicker">Capítulo 2 · Dónde está</p>
-      <h2>Cali mira a la montaña. Su oriente vive pegado al río.</h2>
-      <p>Entre la ciudad y el río Cauca hay una línea que casi nadie ve como frontera, aunque lo es.</p>
+      <h3>Cali mira a la cordillera. Su oriente vive pegado al río.</h3>
+      <p>Entre la ciudad y el Cauca hay una línea que casi nadie ve como frontera, aunque lo es. Sigue el punto amarillo.</p>
     </div></div>
     <div class="step" data-step="1"><div class="card">
-      <h2>17 kilómetros junto al Cauca.</h2>
+      <h3>17 kilómetros junto al Cauca.</h3>
       <p>El tramo principal, el jarillón de Aguablanca, separa los barrios del oriente del cauce del río.</p>
       <p class="src" data-f="tiempoTramos"></p>
     </div></div>
     <div class="step" data-step="2"><div class="card">
-      <h2>Más dos brazos: 26,1 km en total.</h2>
+      <h3>Más dos brazos: 26,1 km en total.</h3>
       <p>A los 17 km se suman 6,7 km del Canal Interceptor Sur y 2 km sobre el río Cali.</p>
       <p class="src" data-f="tiempoTramos"></p>
     </div></div>
     <div class="step" data-step="3"><div class="card">
-      <h2>Detrás del muro está el oriente.</h2>
+      <h3>Detrás del muro está el oriente.</h3>
       <p>Allí, junto al dique, funciona la planta de Puerto Mallarino. Se ha reportado que de ella sale cerca del <b>80 %</b> del agua potable de Cali.</p>
-      <p class="src" data-f="occAgua"></p><p><span data-e="con-limites"></span> Dato en actualización con EMCALI.</p>
+      <p class="src" data-f="occAgua"></p><p class="estado"><span data-e="con-limites"></span> En actualización con EMCALI.</p>
     </div></div>
   </div>
 </section>
 
-<!-- ================= 3 · HISTORIA ================= -->
-<section class="scene" id="historia" data-scene="historia">
-  <div class="stage">
-    <svg viewBox="0 0 800 460" aria-hidden="true" class="hist-svg">
-      <text id="hist-year" x="30" y="90" class="svg-year">1958</text>
-      <rect x="0" y="360" width="800" height="100" fill="#cbb995"/>
-      <g class="fade" data-s="0"><ellipse cx="120" cy="368" rx="70" ry="9" fill="#4c8fb0" opacity=".7"/><ellipse cx="270" cy="370" rx="50" ry="7" fill="#4c8fb0" opacity=".7"/>
-        <path d="M60 360 l6-18 l6 18 M200 360 l5-14 l5 14 M330 360 l6-16 l6 16" stroke="#2f5d2e" stroke-width="3" fill="none"/>
-        <text x="180" y="410" class="svg-small" text-anchor="middle">humedales, madreviejas y potreros</text></g>
-      <g class="fade" data-s="1-">
-        <g fill="#e3d3b4" stroke="#141414" stroke-width="2">
-          <path d="M20 360v-36h40v36z"/><path d="M70 360v-52h34v52z"/><path d="M114 360v-30h44v30z"/><path d="M168 360v-60h30v60z"/><path d="M208 360v-40h44v40z"/><path d="M262 360v-28h40v28z"/><path d="M312 360v-46h36v46z"/>
+<!-- ============ 03 · HISTORIA · línea de tiempo horizontal ============ -->
+<section class="opener" id="cap-historia" data-cap="historia">
+  <div class="opener__in">
+    <span class="opener__num">03</span>
+    <p class="opener__kicker">Capítulo tres</p>
+    <h2 class="opener__title">El muro que atrajo a la ciudad</h2>
+    <p class="opener__dek">De 1958 a hoy en seis momentos. Sigue bajando: el tiempo corre hacia la derecha.</p>
+  </div>
+</section>
+<section class="hscroll" data-scene="historia" data-cap="historia" data-scrub="historia" style="--n:6">
+  <div class="hscroll__pin">
+    <div class="hscroll__year" id="h-year" aria-hidden="true">1958</div>
+    <svg class="hscroll__land" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <rect x="0" y="250" width="1200" height="70" fill="#cbb995"/>
+      <g data-h="0" class="fade"><ellipse cx="180" cy="258" rx="110" ry="10" fill="#4c8fb0" opacity=".7"/><ellipse cx="460" cy="260" rx="80" ry="8" fill="#4c8fb0" opacity=".7"/><ellipse cx="660" cy="256" rx="60" ry="7" fill="#4c8fb0" opacity=".6"/>
+        <g stroke="#2f5d2e" stroke-width="3" fill="none"><path d="M90 250 l6-20 l6 20 M300 250 l5-16 l5 16 M560 250 l6-18 l6 18 M380 250 l4-12 l4 12"/></g>
+        <g fill="#5b5650"><ellipse cx="250" cy="244" rx="12" ry="6"/><ellipse cx="610" cy="244" rx="12" ry="6"/></g></g>
+      <g data-h="1-" class="grow">
+        <g fill="#e8dcc3" stroke="#141414" stroke-width="2">
+          <path d="M30 250v-46h50v46z"/><path d="M90 250v-70h40v70z"/><path d="M140 250v-38h56v38z"/><path d="M206 250v-84h36v84z"/><path d="M252 250v-52h54v52z"/><path d="M316 250v-36h48v36z"/><path d="M374 250v-62h44v62z"/><path d="M428 250v-44h50v44z"/><path d="M488 250v-30h46v30z"/><path d="M544 250v-56h40v56z"/><path d="M594 250v-40h52v40z"/><path d="M656 250v-26h40v26z"/>
         </g>
-        <text x="180" y="410" class="svg-small" text-anchor="middle">la tierra seca se vuelve ciudad</text>
       </g>
-      <rect id="hist-agua" x="600" y="330" width="200" height="30" fill="#4c8fb0"/>
-      <polygon class="draw-poly" points="400,360 470,250 560,250 630,360" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
-      <text x="515" y="400" class="svg-small" text-anchor="middle">dique</text>
-      <text x="720" y="400" class="svg-small" text-anchor="middle">río Cauca</text>
-      <g class="pop" data-s="2-">
-        <path d="M478 250v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="2"/><path d="M506 250v-22l13-11 13 11v22z" fill="#f2c230" stroke="#141414" stroke-width="2"/><path d="M538 250v-16l10-9 10 9v16z" fill="#f3eee3" stroke="#141414" stroke-width="2"/>
-      </g>
-      <g class="fade" data-s="3"><circle cx="452" cy="300" r="8" fill="none" stroke="#c0392b" stroke-width="3"/><circle cx="590" cy="320" r="8" fill="none" stroke="#c0392b" stroke-width="3"/><circle cx="520" cy="262" r="8" fill="none" stroke="#c0392b" stroke-width="3"/>
-        <text x="600" y="200" class="svg-hand svg-alert">118 rampas · 18 erosiones · 12 escombros</text></g>
-      <g class="fade" data-s="5"><rect x="400" y="160" width="230" height="34" fill="#141414"/><text x="515" y="183" class="svg-tag" text-anchor="middle">obra al 97 % · gente al 64 %</text></g>
+      <rect id="h-agua" x="960" y="210" width="240" height="40" fill="#4c8fb0"/>
+      <polygon points="740,250 820,120 920,120 1000,250" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
+      <g data-h="2-" class="pop"><path d="M826 120v-22l12-11 12 11v22z" fill="#f3eee3" stroke="#141414" stroke-width="2"/><path d="M856 120v-28l15-13 15 13v28z" fill="#f2c230" stroke="#141414" stroke-width="2"/><path d="M892 120v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="2"/></g>
+      <g data-h="3" class="fade"><g fill="none" stroke="#c0392b" stroke-width="3"><circle cx="790" cy="190" r="10"/><circle cx="950" cy="200" r="10"/><circle cx="870" cy="140" r="10"/></g></g>
+      <g data-h="4" class="fade"><path d="M780 250v-16l9-8 9 8v16zM950 250v-14l8-7 8 7v14z" fill="#f2c230" stroke="#141414" stroke-width="2"/></g>
+      <g data-h="5" class="fade"><path class="crack" d="M940 196 l10 12 l-8 10 l12 14" fill="none" stroke="#141414" stroke-width="3"/></g>
+      <text x="870" y="290" class="svg-small" text-anchor="middle">dique</text><text x="1100" y="290" class="svg-small" text-anchor="middle">río Cauca</text>
     </svg>
-  </div>
-  <div class="steps">
-    <div class="step" data-step="0" data-year="1958"><div class="card">
-      <p class="kicker">Capítulo 3 · El muro que atrajo a la ciudad</p>
-      <h2>1958. Un dique para secar la tierra.</h2>
-      <p>La CVC levanta el Anillo de Aguablanca. Su objetivo no era proteger una ciudad: era drenar potreros, humedales y madreviejas que el río inundaba.</p>
-      <p class="src" data-f="cvcCrecientes"></p><p><span data-e="con-limites"></span></p>
-    </div></div>
-    <div class="step" data-step="1" data-year="1970"><div class="card">
-      <h2>Años 60 y 70. Funcionó, y ahí empezó la paradoja.</h2>
-      <p>La tierra seca y protegida se volvió valiosa: primero para el ganado, después para la urbanización formal y el loteo informal. Llegaron familias migrantes, muchas del Pacífico.</p>
-      <p class="src" data-f="uribe2012"></p><p><span data-e="por-verificar"></span></p>
-    </div></div>
-    <div class="step" data-step="2" data-year="2011"><div class="card">
-      <h2>2010-2011. Algunas familias se instalaron en el propio muro.</h2>
-      <p>La Niña pone a prueba el dique. Tras la emergencia se censan 8.777 hogares viviendo sobre él.</p>
-      <p class="src" data-f="alcPlan"></p><p><span data-e="verificado"></span></p>
-    </div></div>
-    <div class="step" data-step="3" data-year="2012"><div class="card">
-      <h2>2012. Los ingenieros holandeses lo revisan.</h2>
-      <p>Encuentran puntos críticos en 3,5 de los 17 km del dique de Aguablanca: 118 rampas, 18 puntos de erosión, 12 de escombros. Nace el Plan Jarillón.</p>
-      <blockquote class="quote">«El dique fue construido hace muchos años en una época que no hubo urbanización…»<cite>Carlos Sinisterra, asesor de la Alcaldía, 2012</cite></blockquote>
-      <p class="src" data-f="holanda2"></p>
-    </div></div>
-    <div class="step" data-step="4" data-year="2024"><div class="card">
-      <h2>2024. Tramos ya reforzados vuelven a ser ocupados.</h2>
-      <p>Se reporta la reinvasión de sectores intervenidos. La Contraloría advierte que, después de 10 años, el componente social no se ha cumplido.</p>
-      <p class="src" data-f="pais2024"></p><p><span data-e="con-limites"></span></p>
-    </div></div>
-    <div class="step" data-step="5" data-year="2026"><div class="card">
-      <h2>2026. La obra casi está lista. La gente, no.</h2>
-      <p>El refuerzo va en 97 %. De 8.777 hogares censados se han reasentado 5.645. En agosto, un sismo de magnitud 7,4 sacude la región: el dique sigue íntegro, con una fisura en Paso del Comercio.</p>
-      <p class="src" data-f="pais2026"></p><p class="src" data-f="paisSismo"></p>
-    </div></div>
+    <div class="hscroll__track" id="h-track">
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">1958</p>
+        <h3>Un dique para secar la tierra.</h3>
+        <p>La CVC levanta el Anillo de Aguablanca. Su objetivo no era proteger una ciudad: era drenar potreros, humedales y madreviejas que el río inundaba.</p>
+        <p class="src" data-f="cvcCrecientes"></p><p class="estado"><span data-e="con-limites"></span></p>
+      </div></article>
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">Años 60 y 70</p>
+        <h3>Funcionó. Y ahí empezó la paradoja.</h3>
+        <p>La tierra seca y protegida se volvió valiosa: primero para el ganado, después para la urbanización formal y el loteo informal. Llegaron familias migrantes, muchas del Pacífico.</p>
+        <p class="src" data-f="uribe2012"></p><p class="estado"><span data-e="por-verificar"></span></p>
+      </div></article>
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">2010-2011</p>
+        <h3>La Niña pone a prueba el muro.</h3>
+        <p>El río llega a 10 cm de la corona. Tras la emergencia se censan 8.777 hogares viviendo sobre el dique.</p>
+        <p class="src" data-f="alcPlan"></p><p class="estado"><span data-e="verificado"></span></p>
+      </div></article>
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">2012</p>
+        <h3>Los ingenieros holandeses lo revisan.</h3>
+        <p>Puntos críticos en 3,5 de los 17 km del dique de Aguablanca: 118 rampas, 18 puntos de erosión y 12 de escombros. Nace el Plan Jarillón.</p>
+        <blockquote class="quote">«El dique fue construido hace muchos años en una época que no hubo urbanización…»<cite>Carlos Sinisterra, asesor de la Alcaldía, 2012</cite></blockquote>
+        <p class="src" data-f="holanda2"></p>
+      </div></article>
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">2024</p>
+        <h3>Tramos reforzados vuelven a ser ocupados.</h3>
+        <p>Se reporta la reinvasión de sectores ya intervenidos. La Contraloría advierte que, después de 10 años, el componente social no se ha cumplido.</p>
+        <p class="src" data-f="pais2024"></p><p class="estado"><span data-e="con-limites"></span></p>
+      </div></article>
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">2026</p>
+        <h3>La obra casi está lista. La gente, no.</h3>
+        <p>El refuerzo va en 97 % y se han reasentado 5.645 de 8.777 hogares. En agosto, un sismo de magnitud 7,4 sacude la región: el dique sigue íntegro, con una fisura en Paso del Comercio.</p>
+        <p class="src" data-f="pais2026"></p><p class="src" data-f="paisSismo"></p>
+      </div></article>
+    </div>
+    <div class="hscroll__ruler" aria-hidden="true">
+      <div class="hscroll__fill" id="h-fill"></div>
+      <span>1958</span><span>60-70</span><span>2011</span><span>2012</span><span>2024</span><span>2026</span>
+    </div>
   </div>
 </section>
 
-<!-- ================= 4 · ANATOMÍA ================= -->
-<section class="scene" id="anatomia" data-scene="anatomia">
+<!-- ============ 04 · CÓMO FALLA · plano técnico ============ -->
+<section class="opener opener--plano" id="cap-anatomia" data-cap="anatomia">
+  <div class="opener__in">
+    <span class="opener__num">04</span>
+    <p class="opener__kicker">Capítulo cuatro</p>
+    <h2 class="opener__title">Cuatro maneras de ceder</h2>
+    <p class="opener__dek">Un dique de tierra se puede romper por arriba, por dentro, por los lados o por debajo.</p>
+  </div>
+</section>
+<section class="scene scene--full plano" data-scene="anatomia" data-cap="anatomia">
   <div class="stage">
     <svg viewBox="0 0 800 470" aria-hidden="true" class="anat-svg">
-      <rect x="0" y="360" width="800" height="110" fill="#b9a47c"/>
-      <g id="suelo-ondas" class="fade" data-s="4"><path d="M0 390 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#7a6545" stroke-width="2"/></g>
-      <rect id="anat-agua" x="560" y="300" width="240" height="60" fill="#4c8fb0"/>
+      <defs>
+        <pattern id="p-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#cfe3ee" stroke-opacity=".12"/></pattern>
+        <path id="ruta-filtra" d="M560 345 C 470 350, 380 330, 300 352 L 222 356"/>
+      </defs>
+      <rect x="0" y="0" width="800" height="470" fill="url(#p-grid)"/>
+      <rect x="0" y="360" width="800" height="110" fill="#cfe3ee" fill-opacity=".08"/>
+      <line x1="0" y1="360" x2="800" y2="360" stroke="#cfe3ee" stroke-width="1.5"/>
+      <g id="suelo-ondas" class="fade" data-s="4"><path class="wobble" d="M0 395 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#f2c230" stroke-width="2"/><path class="wobble w2" d="M0 425 q20 8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#f2c230" stroke-width="2"/></g>
+      <rect id="anat-agua" x="560" y="300" width="240" height="60" fill="#4c8fb0" fill-opacity=".75"/>
       <g id="dique-g">
-        <polygon points="200,360 320,210 460,210 580,360" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
-        <polygon id="talud" points="200,360 260,285 300,300 250,360" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
+        <polygon points="200,360 320,210 460,210 580,360" fill="#cfe3ee" fill-opacity=".1" stroke="#cfe3ee" stroke-width="2.5"/>
+        <polygon id="talud" points="200,360 260,285 300,300 250,360" fill="#cfe3ee" fill-opacity=".14" stroke="#cfe3ee" stroke-width="2.5"/>
       </g>
       <g class="fade" data-s="0">
-        <text x="390" y="196" class="svg-small" text-anchor="middle">corona</text>
-        <text x="555" y="270" class="svg-small" text-anchor="middle">cara húmeda →</text>
-        <text x="220" y="270" class="svg-small" text-anchor="middle">← cara seca</text>
-        <text x="390" y="420" class="svg-small" text-anchor="middle">suelo de fundación</text>
-        <text x="690" y="300" class="svg-label" text-anchor="middle">Río Cauca</text>
-        <text x="90" y="300" class="svg-label" text-anchor="middle">Ciudad</text>
+        <path class="draw" pathLength="1" d="M320 196 H460" stroke="#f2c230" stroke-width="1.5"/>
+        <text x="390" y="188" class="svg-plano" text-anchor="middle">CORONA</text>
+        <text x="600" y="250" class="svg-plano" text-anchor="middle">CARA HÚMEDA →</text>
+        <text x="180" y="250" class="svg-plano" text-anchor="middle">← CARA SECA</text>
+        <text x="390" y="420" class="svg-plano" text-anchor="middle">SUELO DE FUNDACIÓN</text>
+        <text x="690" y="290" class="svg-plano" text-anchor="middle">RÍO CAUCA</text>
+        <text x="90" y="300" class="svg-plano" text-anchor="middle">CIUDAD</text>
       </g>
-      <g class="fade" data-s="1"><path d="M560 200 C 470 180, 420 190, 330 205 L 300 260" fill="none" stroke="#2f6f8f" stroke-width="10" stroke-linecap="round" opacity=".8"/><path d="M286 250 l14 14 l10 -18" fill="none" stroke="#2f6f8f" stroke-width="4"/></g>
-      <g class="fade" data-s="2"><path class="flow" d="M560 340 C 470 345, 380 330, 300 352 L 230 356" fill="none" stroke="#2f6f8f" stroke-width="5" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="232" cy="352" r="10" fill="#4c8fb0" opacity=".6"/></g>
-      <g class="fade" data-s="4-"><g stroke="#141414" stroke-width="5"><line x1="340" y1="215" x2="340" y2="450"/><line x1="390" y1="215" x2="390" y2="450"/><line x1="440" y1="215" x2="440" y2="450"/></g><text x="470" y="440" class="svg-small">columnas hasta 9 m</text></g>
-      <g class="pop" data-s="5">
-        <path d="M330 210v-20l12-11 12 11v20z" fill="#f3eee3" stroke="#141414" stroke-width="2"/><path d="M370 210v-24l14-12 14 12v24z" fill="#f2c230" stroke="#141414" stroke-width="2"/>
-        <path d="M418 210 l10 -12 l8 6 l9 -10 l10 16z" fill="#7a6545" stroke="#141414" stroke-width="1.5"/>
-        <path d="M480 260 l40 -6 l10 20 l-42 6z" fill="#e3d3b4" stroke="#141414" stroke-width="1.5"/>
-        <text x="300" y="160" class="svg-hand svg-alert">casas · escombros · rampas</text>
+      <g class="fade" data-s="1"><path class="overflow" d="M560 196 C 480 190, 420 196, 330 204 C 300 208, 290 240, 270 290" fill="none" stroke="#4c8fb0" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 10"/></g>
+      <g class="fade" data-s="2">
+        <use href="#ruta-filtra" fill="none" stroke="#4c8fb0" stroke-width="2" stroke-dasharray="3 6"/>
+        <g fill="#9cc7dc">
+          <circle r="5"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
+          <circle r="4"><animateMotion dur="2.4s" begin=".5s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
+          <circle r="6"><animateMotion dur="2.4s" begin="1s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
+          <circle r="3"><animateMotion dur="2.4s" begin="1.5s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="2.4s" begin="2s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
+        </g>
+        <circle class="pulse" cx="222" cy="356" r="12" fill="#4c8fb0" fill-opacity=".5"/>
       </g>
-      <text x="400" y="462" class="svg-small" text-anchor="middle">Corte esquemático, no a escala</text>
+      <g class="fade" data-s="3"><path d="M236 300 q-30 10 -46 40" fill="none" stroke="#f2c230" stroke-width="2" stroke-dasharray="4 5"/><path d="M186 334 l4 10 l8 -8" fill="none" stroke="#f2c230" stroke-width="2"/></g>
+      <g data-s="4-" class="cols"><g stroke="#f2c230" stroke-width="5"><line x1="340" y1="215" x2="340" y2="450"/><line x1="390" y1="215" x2="390" y2="450"/><line x1="440" y1="215" x2="440" y2="450"/></g><text x="470" y="446" class="svg-plano">COLUMNAS HASTA 9 M</text></g>
+      <g class="drop" data-s="5">
+        <path d="M330 210v-20l12-11 12 11v20z" fill="#f2c230" stroke="#141414" stroke-width="2"/><path d="M370 210v-24l14-12 14 12v24z" fill="#f2c230" stroke="#141414" stroke-width="2"/>
+        <path d="M418 210 l10 -12 l8 6 l9 -10 l10 16z" fill="#a68a5e" stroke="#cfe3ee" stroke-width="1.5"/>
+        <path d="M480 262 l40 -6 l10 20 l-42 6z" fill="#a68a5e" stroke="#cfe3ee" stroke-width="1.5"/>
+        <text x="390" y="150" class="svg-plano svg-plano--alert" text-anchor="middle">CASAS · ESCOMBROS · RAMPAS</text>
+      </g>
+      <text x="790" y="24" class="svg-plano svg-plano--dim" text-anchor="end">CORTE ESQUEMÁTICO · NO A ESCALA</text>
     </svg>
   </div>
   <div class="steps">
-    <div class="step" data-step="0"><div class="card">
-      <p class="kicker">Capítulo 4 · Cómo puede fallar</p>
-      <h2>Un muro de tierra tiene cuatro formas de ceder.</h2>
-      <p>Por arriba, por dentro, por los lados y por debajo. Fue diseñado para la Cali de 1958, cuando el oriente no estaba urbanizado.</p>
+    <div class="step" data-step="0"><div class="card card--plano">
+      <p class="card__tag">Anatomía</p>
+      <h3>Un muro de tierra diseñado para la Cali de 1958.</h3>
+      <p>Tiene una corona arriba, una cara que mira al río y otra que mira a la ciudad. Cuando se construyó, el oriente no estaba urbanizado.</p>
       <p class="src" data-f="alc2022"></p>
     </div></div>
-    <div class="step" data-step="1"><div class="card">
-      <h2>Por arriba: desbordamiento.</h2>
-      <p data-txt="fallas.desborde"></p>
-    </div></div>
-    <div class="step" data-step="2"><div class="card">
-      <h2>Por dentro: filtración.</h2>
-      <p data-txt="fallas.filtracion"></p>
-    </div></div>
-    <div class="step" data-step="3"><div class="card">
-      <h2>Por los lados: el talud se desliza.</h2>
-      <p data-txt="fallas.talud"></p>
-    </div></div>
-    <div class="step" data-step="4"><div class="card">
-      <h2>Por debajo: el suelo se vuelve líquido.</h2>
-      <p data-txt="fallas.licuefaccion"></p>
-      <p data-txt="puntos.columnas"></p>
-      <p class="src" data-f="occRefuerzo"></p>
-    </div></div>
-    <div class="step" data-step="5"><div class="card">
-      <h2>Y lo que el muro carga encima lo debilita.</h2>
-      <p>Cada vivienda implica cimientos y pozos dentro de la estructura. Cuando se demuele una casa y los escombros se quedan, el dique carga peso muerto. Cada rampa reduce la sección que resiste al río.</p>
+    <div class="step" data-step="1"><div class="card card--plano"><p class="card__tag">Falla 1 de 4 · por arriba</p><h3>Desbordamiento</h3><p data-txt="fallas.desborde"></p></div></div>
+    <div class="step" data-step="2"><div class="card card--plano"><p class="card__tag">Falla 2 de 4 · por dentro</p><h3>Filtración</h3><p data-txt="fallas.filtracion"></p></div></div>
+    <div class="step" data-step="3"><div class="card card--plano"><p class="card__tag">Falla 3 de 4 · por los lados</p><h3>El talud se desliza</h3><p data-txt="fallas.talud"></p></div></div>
+    <div class="step" data-step="4"><div class="card card--plano"><p class="card__tag">Falla 4 de 4 · por debajo</p><h3>Licuefacción</h3><p data-txt="fallas.licuefaccion"></p><p data-txt="puntos.columnas"></p><p class="src" data-f="occRefuerzo"></p></div></div>
+    <div class="step" data-step="5"><div class="card card--plano">
+      <p class="card__tag">Lo que lo debilita</p>
+      <h3>Lo que el muro carga encima.</h3>
+      <p>Cada vivienda implica cimientos y pozos dentro de la estructura. Los escombros que quedan tras una demolición son peso muerto. El diagnóstico de 2012 contó 118 rampas: cada corte reduce la sección que resiste al río.</p>
       <p class="src" data-f="diag2012"></p>
-      <p class="fine">Explicación general de ingeniería de diques aplicada al jarillón con el diagnóstico de 2012.</p>
     </div></div>
   </div>
 </section>
 
-<!-- ================= 5 · SI CEDE ================= -->
-<section class="scene" id="cede" data-scene="cede">
+<!-- ============ 05 · SI CEDE · inundación ligada al scroll + tablero ============ -->
+<section class="opener opener--alerta" id="cap-cede" data-cap="cede">
+  <div class="opener__in">
+    <span class="opener__num">05</span>
+    <p class="opener__kicker">Capítulo cinco</p>
+    <h2 class="opener__title">Si el muro cede</h2>
+    <p class="opener__dek">Un escenario ilustrativo basado en el estudio de riesgo de la CVC y OSSO-Univalle.</p>
+  </div>
+</section>
+<section class="scene scene--full alerta" data-scene="cede" data-cap="cede" data-scrub="cede">
   <div class="stage">
     <svg viewBox="0 0 900 560" aria-hidden="true" id="cede-svg">
-      <defs><clipPath id="clip-oriente"><rect x="0" y="0" width="800" height="560"/></clipPath></defs>
-      <rect x="0" y="0" width="800" height="560" fill="#e3d3b4"/>
-      <g opacity=".35" stroke="#141414" stroke-width="1"><path d="M0 120H800M0 240H800M0 360H800M0 480H800M160 0V560M320 0V560M480 0V560M640 0V560"/></g>
-      <circle id="flood" cx="760" cy="240" r="0" fill="#2f6f8f" opacity=".55" clip-path="url(#clip-oriente)"/>
-      <rect x="800" y="0" width="100" height="560" fill="#4c8fb0"/>
-      <line x1="800" y1="0" x2="800" y2="560" stroke="#141414" stroke-width="8"/>
-      <text x="850" y="280" class="svg-label" text-anchor="middle" transform="rotate(90 850 280)" fill="#fff">Río Cauca</text>
-      <text x="20" y="540" class="svg-small">← hacia el centro de Cali</text>
+      <defs>
+        <clipPath id="clip-oriente"><rect x="0" y="0" width="800" height="560"/></clipPath>
+        <filter id="f-borde" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="60"/></filter>
+      </defs>
+      <rect x="0" y="0" width="800" height="560" fill="#2a2620"/>
+      <g opacity=".5" stroke="#5b5650" stroke-width="1"><path d="M0 80H800M0 160H800M0 240H800M0 320H800M0 400H800M0 480H800M100 0V560M200 0V560M300 0V560M400 0V560M500 0V560M600 0V560M700 0V560"/></g>
+      <g opacity=".35" fill="#5b5650"><rect x="120" y="110" width="60" height="30"/><rect x="230" y="280" width="80" height="40"/><rect x="420" y="380" width="70" height="30"/><rect x="380" y="90" width="50" height="50"/><rect x="560" y="330" width="40" height="60"/><rect x="200" y="430" width="90" height="40"/></g>
+      <g clip-path="url(#clip-oriente)"><circle id="flood" cx="760" cy="240" r="0" fill="#2f6f8f" fill-opacity=".72" filter="url(#f-borde)"/></g>
+      <rect x="800" y="0" width="100" height="560" fill="#2f6f8f"/>
+      <path class="river-flow" d="M850 0 V560" stroke="#9cc7dc" stroke-width="2" stroke-dasharray="6 18"/>
+      <line x1="800" y1="0" x2="800" y2="560" stroke="#a68a5e" stroke-width="8"/>
+      <text x="866" y="280" class="svg-label" text-anchor="middle" transform="rotate(90 866 280)" fill="#fff">Río Cauca</text>
+      <text x="20" y="540" class="svg-small svg-small--light">← hacia el centro de Cali</text>
       <g id="infra"></g>
-      <g id="breach" class="pop" data-s="1-"><path d="M790 220 l20 10 l-14 8 l18 12" fill="none" stroke="#c0392b" stroke-width="5"/><text x="780" y="206" class="svg-small svg-alert" text-anchor="end">ruptura</text></g>
+      <g id="breach" class="pop" data-s="1-"><circle class="ring" cx="800" cy="240" r="16" fill="none" stroke="#c0392b" stroke-width="3"/><circle class="ring r2" cx="800" cy="240" r="16" fill="none" stroke="#c0392b" stroke-width="3"/><path d="M792 222 l14 9 l-12 8 l14 11" fill="none" stroke="#f3eee3" stroke-width="5"/></g>
     </svg>
+    <div class="hud" aria-hidden="true">
+      <div><span class="hud__k">Área inundada</span><span class="hud__v" id="hud-ha">0 ha</span></div>
+      <div><span class="hud__k">Servicios afectados</span><span class="hud__v" id="hud-srv">0 de 7</span></div>
+    </div>
     <p class="stage-note">Esquema ilustrativo: posiciones aproximadas. No es una modelación hidráulica.</p>
   </div>
   <div class="steps">
-    <div class="step" data-step="0"><div class="card">
-      <p class="kicker">Capítulo 5 · Si el muro cede</p>
-      <h2>Imagina una creciente de las que llegan, en promedio, una vez cada 100 años.</h2>
+    <div class="step" data-step="0"><div class="card card--dark">
+      <h3>Imagina una creciente de las que llegan, en promedio, una vez cada 100 años.</h3>
       <p>Detrás del dique está la infraestructura de la que depende toda la ciudad, no solo el oriente.</p>
     </div></div>
-    <div class="step" data-step="1"><div class="card">
-      <h2>El muro se rompe frente a Puerto Mallarino.</h2>
-      <p>La misión holandesa de 2012 ubicó puntos críticos cerca de esta planta, de la PTAR Cañaveralejo, Alfonso López y Navarro.</p>
+    <div class="step" data-step="1"><div class="card card--dark">
+      <h3>El muro se rompe frente a Puerto Mallarino.</h3>
+      <p>La misión holandesa de 2012 ubicó puntos críticos cerca de esta planta, de la PTAR Cañaveralejo, de Alfonso López y de Navarro.</p>
       <p class="src" data-f="diag2012"></p>
     </div></div>
-    <div class="step" data-step="2"><div class="card">
-      <h2>Primero, el agua de la llave.</h2>
+    <div class="step" data-step="2"><div class="card card--dark">
+      <h3>Primero, el agua de la llave.</h3>
       <p>La planta de agua potable queda bajo el agua. Las estaciones de bombeo, que sacan la lluvia del oriente hacia el río, dejan de funcionar.</p>
       <p class="src" data-f="occAgua"></p>
     </div></div>
-    <div class="step" data-step="3"><div class="card">
-      <h2>Después, el resto del sistema.</h2>
+    <div class="step" data-step="3"><div class="card card--dark">
+      <h3>Después, el resto del sistema.</h3>
       <p>Las lagunas que regulan la lluvia, la planta de aguas residuales, los barrios y el transporte.</p>
-      <p class="src" data-f="holanda2"></p><p><span data-e="por-verificar"></span> Impacto sobre el MIO en verificación con Metrocali.</p>
+      <p class="src" data-f="holanda2"></p><p class="estado"><span data-e="por-verificar"></span> Impacto sobre el MIO en verificación con Metrocali.</p>
     </div></div>
-    <div class="step" data-step="4"><div class="card card--big">
+    <div class="step" data-step="4"><div class="card card--dark card--big">
       <p class="big-n"><b class="count" data-to="12293" data-suf=" ha">12.293 ha</b></p>
       <p>inundadas en Cali, Palmira, Candelaria y Yumbo, según el estudio de la CVC y OSSO-Univalle.</p>
       <p class="src" data-f="cvcOsso2015"></p>
-      <blockquote class="quote">«…tendríamos por lo menos un millón de damnificados».<cite>Advertencia recogida por la Alcaldía de Cali, ago. 2022</cite></blockquote>
+      <blockquote class="quote quote--dark">«…tendríamos por lo menos un millón de damnificados».<cite>Advertencia recogida por la Alcaldía de Cali, ago. 2022</cite></blockquote>
       <p class="src" data-f="alcTramo6"></p>
     </div></div>
   </div>
 </section>
 
-<!-- ================= 6 · LA BRECHA ================= -->
-<section class="scene" id="brecha" data-scene="brecha">
-  <div class="stage">
-    <svg viewBox="0 0 800 480" aria-hidden="true" id="brecha-svg"></svg>
+<!-- ============ 06 · LA BRECHA · carrera de barras ============ -->
+<section class="opener" id="cap-brecha" data-cap="brecha">
+  <div class="opener__in">
+    <span class="opener__num">06</span>
+    <p class="opener__kicker">Capítulo seis</p>
+    <h2 class="opener__title">La brecha</h2>
+    <p class="opener__dek">Dos carreras que empezaron juntas: reforzar el muro y sacar a la gente de él.</p>
+  </div>
+</section>
+<section class="scene scene--full" data-scene="brecha" data-cap="brecha" data-scrub="brecha">
+  <div class="stage stage--race">
+    <div class="race">
+      <p class="race__year" id="r-year">2018</p>
+      <div class="race__row">
+        <p class="race__lbl"><b>El muro</b> <span>km reforzados de 26,1</span></p>
+        <div class="race__track"><div class="race__bar" id="r-obra"></div></div>
+        <p class="race__v" id="r-obra-v">0 %</p>
+      </div>
+      <div class="race__row race__row--gente">
+        <p class="race__lbl"><b>La gente</b> <span>hogares reasentados de 8.777</span></p>
+        <div class="race__track"><div class="race__bar" id="r-gente"></div><span class="race__nd" id="r-nd">sin datos públicos para estos años</span></div>
+        <p class="race__v" id="r-gente-v">—</p>
+      </div>
+      <div class="race__gap" data-s="2-"><span>Brecha</span> <b>33 puntos</b></div>
+      <div class="race__future" data-s="3">
+        <p class="race__fut-t">Al ritmo actual, los 3.132 hogares que quedan saldrían hacia <b>2044</b>.</p>
+        <div class="race__cal" id="r-cal"></div>
+      </div>
+    </div>
   </div>
   <div class="steps">
     <div class="step" data-step="0"><div class="card">
-      <p class="kicker">Capítulo 6 · La brecha</p>
-      <h2>Esta línea es el muro.</h2>
-      <p>Kilómetros reforzados sobre 26,1 km. En 2018 iba en 29 %. En 2026, en 97 %.</p>
+      <h3>La barra negra es el muro.</h3>
+      <p>Kilómetros reforzados sobre 26,1. En 2018 iba en 29 %. En 2026, en 97 %.</p>
       <p class="src" data-f="pais2026"></p>
     </div></div>
     <div class="step" data-step="1"><div class="card">
-      <h2>Esta otra es la gente.</h2>
-      <p>Hogares reasentados sobre los 8.777 del censo. De 60 % en 2024 a 64 % en 2026.</p>
+      <h3>La roja es la gente.</h3>
+      <p>Hogares reasentados sobre los 8.777 del censo: de 60 % en 2024 a 64 % en 2026. Para los años anteriores no encontramos cifras públicas comparables.</p>
       <p class="src" data-f="alcCop16"></p>
     </div></div>
     <div class="step" data-step="2"><div class="card">
-      <h2>Entre las dos hay 33 puntos.</h2>
+      <h3>Entre las dos hay 33 puntos.</h3>
       <p>La obra física avanzó mucho más rápido que el reasentamiento de las familias.</p>
-      <p class="fine">Porcentajes calculados por el equipo sobre una base fija de 26,1 km y 8.777 hogares. No hay datos de reasentamiento entre 2018 y 2024 en las fuentes consultadas.</p>
+      <p class="fine">Porcentajes calculados por el equipo sobre una base fija de 26,1 km y 8.777 hogares.</p>
     </div></div>
     <div class="step" data-step="3"><div class="card card--big">
       <p class="big-n">≈<b class="count" data-to="18" data-suf=" años">18 años</b></p>
@@ -401,52 +484,69 @@
   </div>
 </section>
 
-<!-- ================= 7 · ESCOMBROS ================= -->
-<section class="scene scene--warm" id="escombros" data-scene="escombros">
+<!-- ============ 07 · ESCOMBROS · rueda que gira ============ -->
+<section class="opener opener--calido" id="cap-escombros" data-cap="escombros">
+  <div class="opener__in">
+    <span class="opener__num">07</span>
+    <p class="opener__kicker">Capítulo siete</p>
+    <h2 class="opener__title">Arriendo entre escombros</h2>
+    <p class="opener__dek">Un ciclo que ninguna cifra oficial registra.</p>
+  </div>
+</section>
+<section class="scene scene--left calido" data-scene="escombros" data-cap="escombros">
   <div class="stage">
     <div class="stage-photo" data-photo="assets/img/cronica-escombros.jpg"></div>
-    <svg viewBox="0 0 500 500" aria-hidden="true" id="ciclo-svg">
-      <circle cx="250" cy="250" r="170" fill="none" stroke="#141414" stroke-width="2.5" stroke-dasharray="8 10"/>
-      <path id="ciclo-arrow" d="M250 80 a170 170 0 0 1 0 0" fill="none"/>
-      <g id="ciclo-nodos"></g>
-      <text x="250" y="244" class="svg-hand" text-anchor="middle">el ciclo</text>
-      <text x="250" y="274" class="svg-small" text-anchor="middle">vuelve a empezar ↻</text>
+    <svg viewBox="-80 0 660 500" aria-hidden="true" id="ciclo-svg">
+      <circle cx="250" cy="250" r="170" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="6 9" opacity=".5"/>
+      <path d="M250 62 a188 188 0 0 1 120 44" fill="none" stroke="#a63a2b" stroke-width="4" stroke-linecap="round"/><path d="M362 96 l12 12 l-16 4" fill="none" stroke="#a63a2b" stroke-width="4" stroke-linecap="round"/>
+      <g id="wheel"><g id="ciclo-nodos"></g></g>
+      <text id="wheel-t" x="250" y="246" class="svg-hand" text-anchor="middle">el ciclo</text>
+      <text id="wheel-s" x="250" y="278" class="svg-small" text-anchor="middle">vuelve a empezar ↻</text>
     </svg>
+    <div class="sello" data-s="6"><span>«no puede ser incluido»</span><small>Gerencia jurídica del Plan Jarillón, sobre quienes llegaron después del censo</small></div>
   </div>
   <div class="steps">
     <div class="step" data-step="0"><div class="card">
-      <p class="kicker">Capítulo 7 · Arriendo entre escombros</p>
-      <h2>Hay un mercado que ninguna cifra oficial registra.</h2>
+      <h3>Hay un mercado que ninguna cifra oficial registra.</h3>
       <p>Cuando el Estado desaloja una casa del jarillón, la demolición no siempre llega el mismo día. En ese intervalo, viviendas pendientes de demolición se arriendan a familias que ya salieron una vez del dique.</p>
-      <p><span data-e="por-verificar"></span> Hallazgo de reportería, en verificación.</p>
+      <p class="estado"><span data-e="por-verificar"></span> Hallazgo de reportería, en verificación.</p>
     </div></div>
-    <div class="step" data-step="1" data-ciclo="0"><div class="card"><h2 data-ciclo-t="0"></h2><p data-ciclo-d="0"></p></div></div>
-    <div class="step" data-step="2" data-ciclo="1"><div class="card"><h2 data-ciclo-t="1"></h2><p data-ciclo-d="1"></p><p class="src" data-f="baudo"></p></div></div>
-    <div class="step" data-step="3" data-ciclo="2"><div class="card"><h2 data-ciclo-t="2"></h2><p data-ciclo-d="2"></p></div></div>
-    <div class="step" data-step="4" data-ciclo="3"><div class="card"><h2 data-ciclo-t="3"></h2><p data-ciclo-d="3"></p><p class="src" data-f="entrevista"></p></div></div>
-    <div class="step" data-step="5" data-ciclo="4"><div class="card"><h2 data-ciclo-t="4"></h2><p data-ciclo-d="4"></p><p class="fine">Reconstrucción del equipo a partir de la reportería (en verificación).</p></div></div>
+    <div class="step" data-step="1"><div class="card"><p class="card__tag" data-ciclo-n="0"></p><h3 data-ciclo-t="0"></h3><p data-ciclo-d="0"></p></div></div>
+    <div class="step" data-step="2"><div class="card"><p class="card__tag" data-ciclo-n="1"></p><h3 data-ciclo-t="1"></h3><p data-ciclo-d="1"></p><p class="src" data-f="baudo"></p></div></div>
+    <div class="step" data-step="3"><div class="card"><p class="card__tag" data-ciclo-n="2"></p><h3 data-ciclo-t="2"></h3><p data-ciclo-d="2"></p></div></div>
+    <div class="step" data-step="4"><div class="card"><p class="card__tag" data-ciclo-n="3"></p><h3 data-ciclo-t="3"></h3><p data-ciclo-d="3"></p></div></div>
+    <div class="step" data-step="5"><div class="card"><p class="card__tag" data-ciclo-n="4"></p><h3 data-ciclo-t="4"></h3><p data-ciclo-d="4"></p><p class="fine">Reconstrucción del equipo a partir de la reportería (en verificación).</p></div></div>
+    <div class="step" data-step="6"><div class="card">
+      <h3>Quien llegó después del censo queda por fuera.</h3>
+      <p>El Plan Jarillón solo reconoce a los 8.777 hogares de 2010-2011. Esas familias viven entre ruinas, sin contrato y sin derecho a reasentamiento, hasta el siguiente operativo.</p>
+      <p class="src" data-f="entrevista"></p>
+    </div></div>
   </div>
 </section>
 
-<!-- Testimonios: se muestran solo si hay alguno publicado en js/testimonios.js -->
 <section class="testimonios" id="testimonios" hidden>
   <div class="wrap"><p class="kicker">Voces del jarillón</p><div class="testimonios__grid" id="testimonios-grid"></div></div>
 </section>
 
-<!-- ================= 8 · CIERRE ================= -->
+<!-- ============ CIERRE ============ -->
 <section class="cierre dark" id="cierre">
   <div class="wrap">
     <p class="cierre__line">El muro está casi terminado: <strong>97 %</strong>.</p>
     <p class="cierre__line">La gente que vive en él, no: <strong>64 %</strong>.</p>
     <p class="cierre__line cierre__line--last">Y en 2011, al río le faltaron <mark>10 centímetros</mark>.</p>
+    <svg class="cierre__regla" viewBox="0 0 400 60" aria-hidden="true"><path class="draw" pathLength="1" d="M10 30 H390" stroke="#f2c230" stroke-width="3"/><g class="ticks" stroke="#f2c230" stroke-width="2"></g></svg>
   </div>
 </section>
 
-<!-- ================= CHATBOT ================= -->
+<!-- ============ CHATBOT ============ -->
 <section class="pregunta" id="pregunta">
-  <div class="wrap">
-    <p class="kicker">Asistente del reportaje</p>
-    <h2 class="sec-title">¿Te quedó una pregunta? <span>Pregúntale al Jarillón.</span></h2>
+  <div class="wrap pregunta__grid">
+    <div class="pregunta__intro">
+      <p class="kicker">Asistente del reportaje</p>
+      <h2 class="sec-title">¿Te quedó una pregunta?</h2>
+      <p class="pregunta__lead">«Pregúntale al Jarillón» responde solo con la información verificada de este reportaje, y cada respuesta trae su fuente.</p>
+      <p class="chat__aviso">No reemplaza los canales oficiales: en emergencia, llama al <strong>123</strong>.</p>
+    </div>
     <div class="chat" id="chat">
       <div class="chat__log" id="chat-log" aria-live="polite"></div>
       <div class="chat__sug" id="chat-sug"></div>
@@ -455,43 +555,36 @@
         <input id="chat-input" type="text" placeholder="Escribe tu pregunta sobre el jarillón…" maxlength="300">
         <button class="btn" type="submit">Enviar</button>
       </form>
-      <p class="chat__aviso">Responde solo con información verificada del reportaje y cita la fuente. No reemplaza los canales oficiales: en emergencia, llama al <strong>123</strong>.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= DATOS, ARCHIVO, MÉTODO ================= -->
+<!-- ============ DATOS Y ARCHIVO ============ -->
 <section class="datos" id="datos">
   <div class="wrap">
     <p class="kicker">Para volver a los datos</p>
     <h2 class="sec-title">El jarillón en cifras</h2>
+    <p class="leyenda"><span data-e="verificado"></span> <span data-e="con-limites"></span> <span data-e="por-verificar"></span> Así marcamos el estado de cada dato en el recorrido.</p>
     <div class="cifras" id="cifras"></div>
-
     <details class="archivo">
-      <summary><h2 class="sec-title sec-title--sm">El archivo · <span id="n-fuentes"></span> fuentes</h2></summary>
+      <summary><span class="sec-title sec-title--sm">El archivo</span> <span class="archivo__n"><span id="n-fuentes"></span> fuentes</span></summary>
       <ol id="archivo-list"></ol>
     </details>
-
-    <div class="metodo">
-      <h2 class="sec-title sec-title--sm">Cómo lo hicimos</h2>
-      <div class="metodo__grid">
-        <div><h3>Documentos</h3><p>La IA extrajo cifras, fechas y actores de los documentos y los clasificó por tema. Cada dato se cotejó a mano con la página original.</p></div>
-        <div><h3>Entrevistas</h3><p>Las transcripciones se hicieron con IA. Cada cita publicada se escuchó contra el audio y tiene marca de tiempo.</p></div>
-        <div><h3>Chatbot</h3><p>«Pregúntale al Jarillón» busca respuestas solo en una base de fichas verificadas, cada una con su fuente. Si no sabe algo, lo dice.</p></div>
-        <div><h3>Imágenes y voces</h3><p>Las recreaciones y las voces sintéticas llevan el rótulo «Recreación con IA» o «Voz generada con IA». Nunca se generan rostros de personas reales.</p></div>
-      </div>
-      <p class="leyenda"><span data-e="verificado"></span> <span data-e="con-limites"></span> <span data-e="por-verificar"></span> Así marcamos el estado de cada dato.</p>
-    </div>
   </div>
 </section>
 
 </main>
 
 <footer class="pie dark">
-  <div class="wrap">
-    <p><strong>El Jarillón de Cali</strong> · Reportaje transmedia del curso Periodismo e IA, Universidad Autónoma de Occidente, 2026.</p>
-    <p>Equipo: Alejandro Guerra, Daniela Victoria, Danna Guerra y María José Dalfo.</p>
-    <p><a href="version-anterior.html">Ver la versión con infografías interactivas (simulador, línea de tiempo completa y anatomía con capas)</a></p>
+  <div class="wrap pie__grid">
+    <div>
+      <p class="pie__logo">El <span>Jarillón</span> de Cali</p>
+      <p>Reportaje transmedia del curso Periodismo e IA, Universidad Autónoma de Occidente, 2026.</p>
+    </div>
+    <div>
+      <p><b>Equipo</b><br>Alejandro Guerra, Daniela Victoria, Danna Guerra y María José Dalfo.</p>
+      <p><a href="version-anterior.html">Versión con infografías interactivas →</a></p>
+    </div>
   </div>
 </footer>
 
