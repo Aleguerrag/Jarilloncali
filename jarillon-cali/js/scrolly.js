@@ -177,6 +177,9 @@
     anatomia(n) {
       setGeom($("#anat-agua"), n === 1 ? { y: 190, height: 170 } : { y: 300, height: 60 });
     },
+    ambiente(n) {
+      setGeom($("#amb-rio"), n === 5 ? { x: 742, y: 300, width: 158, height: 58 } : { x: 800, y: 318, width: 100, height: 40 });
+    },
     escombros(n) {
       const i = n >= 1 && n <= 5 ? n - 1 : -1;
       nodos.forEach((nd, k) => nd.g.classList.toggle("on", k === i));
@@ -211,7 +214,7 @@
   const pAgua = $("#d-agua"), pCis = $("#d-cis"), pCali = $("#d-cali"), tip = $("#d-tip"), kmHud = $("#km-hud");
   const lens = [pAgua, pCis, pCali].map((p) => (p ? p.getTotalLength() : 0));
   const hTrack = $("#h-track"), hYear = $("#h-year"), hFill = $("#h-fill"), hScene = $("[data-scene='historia']");
-  const ANIOS = [1958, 1965, 2011, 2012, 2024, 2026];
+  const ANIOS = [1958, 1985, 2011, 2012, 2016, 2024, 2026];
   let hIdx = -1;
   const flood = $("#flood"), hudHa = $("#hud-ha"), hudSrv = $("#hud-srv");
   const rYear = $("#r-year"), rObra = $("#r-obra"), rObraV = $("#r-obra-v"), rGente = $("#r-gente"), rGenteV = $("#r-gente-v"), rNd = $("#r-nd");
@@ -337,8 +340,6 @@
     if (e.isIntersecting) capLinks.forEach((a) => a.classList.toggle("is-on", a.dataset.cap === e.target.dataset.cap));
   }), { rootMargin: "-50% 0px -50% 0px" });
   $$("main > section").forEach((s) => ioCap.observe(s));
-  new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && capLinks.forEach((a) => a.classList.remove("is-on"))), { rootMargin: "-50% 0px -50% 0px" })
-    .observe($("#inicio"));
 
   /* ---------- cierre ---------- */
   const ioC = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && e.target.classList.add("on", "in")), { rootMargin: "0px 0px -20% 0px" });
@@ -373,7 +374,7 @@
   }
 
   /* ---------- testimonios ---------- */
-  if (typeof TESTIMONIOS !== "undefined" && TESTIMONIOS.length) {
+  if (typeof TESTIMONIOS !== "undefined" && TESTIMONIOS.length && $("#testimonios-grid")) {
     const g = $("#testimonios-grid");
     TESTIMONIOS.forEach((t) => {
       const fig = document.createElement("figure");
@@ -409,7 +410,7 @@
     src.start(); lfo.start();
     return true;
   }
-  btn.addEventListener("click", () => {
+  if (btn) btn.addEventListener("click", () => {
     const on = btn.getAttribute("aria-pressed") !== "true";
     if (on && !actx && !iniciarAudio()) return;
     if (actx.state === "suspended") actx.resume();

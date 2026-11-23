@@ -3,28 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>El Jarillón de Cali</title>
-<meta name="description" content="Reportaje transmedia: el dique del río Cauca que protege a Cali, la gente que vive sobre él y lo que pasaría si cede. Periodismo e IA, UAO 2026.">
-<meta property="og:title" content="El Jarillón de Cali · Territorio, gente y riesgo">
-<meta property="og:description" content="En 2011, al río Cauca le faltaron 10 centímetros. Un recorrido por el muro que protege a Cali.">
+<title>El Jarillón de Cali · Mientras sigue el reforzamiento, regresan los reasentamientos</title>
+<meta name="description" content="El muro que protege a Cali del río Cauca está casi terminado. Después del sismo de agosto, el dique se vuelve a poblar. Reportaje transmedia, Periodismo e IA, UAO 2026.">
+<meta property="og:title" content="El Jarillón de Cali · Mientras sigue el reforzamiento, regresan los reasentamientos">
+<meta property="og:description" content="El dique va en 97 %. Tras el sismo de agosto, llegan nuevas ocupaciones y escombros. Un recorrido por el muro que protege a Cali.">
+<meta property="og:image" content="assets/img/puerto-nuevo-inundacion.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F2C230'/%3E%3Cpath d='M6 44 L22 24 H42 L58 44 Z' fill='%23141414'/%3E%3Cpath d='M6 48 q8 -5 16 0 t16 0 t16 0' stroke='%232F6F8F' stroke-width='4' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Shadows+Into+Light&display=swap">
 <link rel="stylesheet" href="css/scrolly.css">
+<link rel="stylesheet" href="css/reportaje.css">
 </head>
 <body>
 
 <header class="bar" id="bar">
   <a class="bar__logo" href="#inicio">El <span>Jarillón</span></a>
-  <ol class="bar__caps" id="bar-caps" aria-label="Capítulos">
-    <li><a href="#cap-muro" data-cap="muro"><i>01</i> El muro</a></li>
-    <li><a href="#cap-mapa" data-cap="mapa"><i>02</i> Dónde</a></li>
-    <li><a href="#cap-historia" data-cap="historia"><i>03</i> Historia</a></li>
-    <li><a href="#cap-anatomia" data-cap="anatomia"><i>04</i> Cómo falla</a></li>
-    <li><a href="#cap-cede" data-cap="cede"><i>05</i> Si cede</a></li>
-    <li><a href="#cap-brecha" data-cap="brecha"><i>06</i> La brecha</a></li>
-    <li><a href="#cap-escombros" data-cap="escombros"><i>07</i> Escombros</a></li>
+  <ol class="bar__caps" id="bar-caps" aria-label="Secciones">
+    <li><a href="#inicio" data-cap="nuevo"><i>01</i> Lo nuevo</a></li>
+    <li><a href="#hoy" data-cap="hoy"><i>02</i> Hoy</a></li>
+    <li><a href="#contexto" data-cap="contexto"><i>03</i> Contexto</a></li>
+    <li><a href="#ambiente" data-cap="ambiente"><i>04</i> Ambiente</a></li>
+    <li><a href="#social" data-cap="social"><i>05</i> Social</a></li>
+    <li><a href="#pregunta" data-cap="pregunta"><i>06</i> Pregúntale</a></li>
+    <li><a href="#historias" data-cap="historias"><i>07</i> Historias</a></li>
+    <li><a href="#proyecciones" data-cap="proyecciones"><i>08</i> Qué viene</a></li>
   </ol>
   <div class="bar__tools">
     <button class="bar__btn" id="sound" type="button" aria-pressed="false" title="Activar sonido del río">
@@ -38,8 +41,8 @@
 
 <main>
 
-<!-- ============ APERTURA · lluvia y agua que sube con el scroll ============ -->
-<section class="scene scene--intro dark" id="inicio" data-scene="intro" data-scrub="intro">
+<!-- ================= 01 · LO NUEVO ================= -->
+<section class="scene scene--intro dark" id="inicio" data-scene="intro" data-scrub="intro" data-cap="nuevo">
   <div class="stage">
     <canvas id="rain" aria-hidden="true"></canvas>
     <svg class="intro-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
@@ -52,118 +55,183 @@
       <path id="intro-ola" d="M455 400 q20 -6 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#9cc7dc" stroke-width="2"/>
       <polygon points="250,400 340,210 460,210 550,400" fill="#5a4a36"/>
       <polygon points="340,210 460,210 452,226 348,226" fill="#6e5b42"/>
-      <g fill="#cbbd9f"><path d="M356 210v-14l10-9 10 9v14z"/><path d="M392 210v-18l13-11 13 11v18z"/><path d="M428 210v-12l9-8 9 8v12z"/></g>
+      <g fill="#cbbd9f" class="intro-casas" data-s="2-"><path d="M356 210v-14l10-9 10 9v14z"/><path d="M392 210v-18l13-11 13 11v18z"/><path d="M428 210v-12l9-8 9 8v12z"/></g>
+      <g class="intro-escombro" data-s="2-" fill="#8d7d66"><path d="M300 300 l14 -10 l10 6 l12 -8 l10 14z"/><path d="M480 290 l18 -6 l8 12 l-22 4z"/></g>
       <rect x="0" y="400" width="800" height="100" fill="#1b1814"/>
-      <g class="ruler" data-s="1-">
-        <line x1="470" y1="210" x2="790" y2="210" stroke="#f2c230" stroke-width="2" stroke-dasharray="6 6"/>
-        <text x="786" y="200" text-anchor="end" class="svg-note">corona del dique</text>
-        <path d="M600 212 v10 M594 212 h12 M594 222 h12" stroke="#f2c230" stroke-width="2"/>
-        <text x="612" y="248" class="svg-big">10 cm</text>
+      <g data-s="1" class="fade">
+        <line x1="340" y1="196" x2="460" y2="196" stroke="#f2c230" stroke-width="3"/>
+        <text x="400" y="184" text-anchor="middle" class="svg-big">97 %</text>
       </g>
     </svg>
   </div>
   <div class="steps">
     <div class="step step--center" data-step="0">
-      <p class="kicker kicker--light">Reportaje transmedia · Periodismo e IA · UAO 2026</p>
-      <p class="intro-line">En 2011, al río Cauca le faltaron <strong>10 centímetros</strong>.</p>
+      <p class="kicker kicker--light">El Jarillón de Cali · Reportaje transmedia · Actualizado el 23 de noviembre de 2026</p>
+      <h1 class="intro-title intro-title--lead">Mientras sigue el reforzamiento, <mark>regresan</mark> los reasentamientos</h1>
       <p class="scroll-hint" aria-hidden="true">Desliza para empezar</p>
     </div>
     <div class="step step--center" data-step="1">
-      <p class="intro-line">Diez centímetros para pasar por encima del muro que protege a <strong>más de 900.000 caleños</strong>.</p>
+      <p class="intro-line">El muro que protege a Cali del río Cauca va en <strong>97 %</strong>: 25,3 de 26,1 kilómetros.</p>
+      <p class="src src--light" data-f="pais2026"></p>
     </div>
     <div class="step step--center" data-step="2">
-      <h1 class="intro-title"><span>El</span> Jarillón <span>de <mark>Cali</mark></span></h1>
-      <p class="intro-sub">Territorio, gente y riesgo</p>
-      <p class="intro-lead">Un muro hecho para contener al río terminó atrayendo a la ciudad. Y sobre él, todavía vive gente.</p>
-      <p class="src src--light" data-f="alcPlan"></p>
+      <p class="intro-line">Pero después del sismo del 10 de agosto, sobre el dique <strong>vuelve a vivir gente</strong>. Y llegan los escombros.</p>
+      <p class="src src--light" data-f="entOrtega"></p>
     </div>
   </div>
 </section>
 
-<!-- ============ 01 · EL MURO · cámara que se aleja + gráfico de unidades ============ -->
-<section class="opener" id="cap-muro" data-cap="muro">
-  <div class="opener__in">
-    <span class="opener__num">01</span>
-    <p class="opener__kicker">Capítulo uno</p>
-    <h2 class="opener__title">El muro</h2>
-    <p class="opener__dek">Qué es el jarillón y quién vive encima.</p>
+<section class="articulo" data-cap="nuevo" aria-labelledby="t-nuevo">
+  <div class="articulo__in">
+    <p class="kicker">01 · Lo nuevo</p>
+    <h2 class="sec-title" id="t-nuevo">El muro casi está. La gente vuelve.</h2>
+    <p class="lead">El Plan Jarillón lleva más de una década con dos tareas: reforzar el dique de tierra que separa al oriente de Cali del río Cauca y sacar de él a los 8.777 hogares que lo habitaban. La obra está a unos 400 metros de terminarse. La segunda tarea no avanza al mismo ritmo, y tiene un problema nuevo: el dique se vuelve a ocupar.</p>
+    <p>Jhony Ortega, coordinador del Proyecto Plan Jarillón, lo dijo sin rodeos cuando el equipo le preguntó qué cambió después del sismo de magnitud 7,4 que sacudió a Cali el 10 de agosto:</p>
+    <figure class="clip" data-audio="ortegaOcupaciones"></figure>
+    <p>No es un fenómeno solo de este año. En enero de 2024, cuando asumió, el gerente del Plan, Juan Diego Saa, ya contaba reinvasiones en tres zonas del jarillón y cuatro en las lagunas, y su equipo trataba de establecer si eran familias nuevas o familias que ya habían salido del dique y habían vuelto.</p>
+    <p class="src" data-f="pais2024"></p>
+    <p>Con la reconstrucción después del sismo aparece una segunda carga. Las demoliciones y reparaciones de viviendas en la ciudad producen escombros, y una parte termina sobre el muro:</p>
+    <figure class="clip" data-audio="ortegaEscombros"></figure>
+    <p>Los escombros no son un problema estético. Son peso muerto sobre una estructura de tierra, tapan las señales de daño y, en la cara que mira al río, quedan como material suelto donde golpea el agua. Solo entre agosto y septiembre, Cali retiró más de 99.000 toneladas de escombros de los edificios que colapsaron.</p>
+    <p class="src" data-f="occEscombros"></p>
+    <aside class="nota cinta">
+      <p class="nota__t">Quién cuenta y quién no</p>
+      <p>Solo los hogares verificados en el censo del Plan tienen derecho a compensación. Quien llegó después del corte <b>no puede ser incluido</b>: se remite a otras secretarías de la Alcaldía. Cuántas personas están hoy en esa situación no se ha publicado.</p>
+      <p class="src" data-f="entrevista"></p>
+    </aside>
+    <p>En la reportería apareció una tercera ruta de regreso, todavía en verificación: familias que salieron del dique con un subsidio de arriendo, no lograron sostenerlo en otro barrio y volvieron a arrendar una casa vecina, todavía en pie, que espera su demolición. Así funciona el ciclo.</p>
   </div>
 </section>
-<section class="scene scene--left scene--muro" data-scene="muro" data-cap="muro">
+
+<section class="scene scene--left calido" data-scene="escombros" data-cap="nuevo">
   <div class="stage">
-    <svg id="muro-svg" viewBox="325 160 190 114" aria-hidden="true">
-      <g id="muro-escena" data-s="0-3">
-        <g data-s="3" class="fade">
-          <path d="M0 380V320h30v-24h22v24h20v-44h34v44h16v-30h26v30h22v-56h28v56h22v-34h20v34h28v-18h22v18" fill="#c9b892" stroke="#141414" stroke-width="2"/>
-          <text x="120" y="420" class="svg-label" text-anchor="middle">Oriente de Cali</text>
-          <text x="120" y="442" class="svg-small" text-anchor="middle">+900.000 personas</text>
-        </g>
-        <rect id="muro-agua" x="560" y="330" width="240" height="50" fill="#4c8fb0" opacity=".9"/>
-        <text x="690" y="420" class="svg-label" text-anchor="middle" data-s="2-">Río Cauca</text>
-        <g data-s="2" class="fade"><line x1="570" y1="254" x2="790" y2="254" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 5"/><text x="786" y="246" class="svg-small svg-alert" text-anchor="end">2011: a 10 cm de la corona</text></g>
-        <polygon points="270,380 365,250 475,250 570,380" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
-        <line x1="0" y1="380" x2="800" y2="380" stroke="#141414" stroke-width="2.5"/>
-        <g data-s="1" class="fade">
-          <path class="draw" pathLength="1" d="M365 200 h110" stroke="#141414" stroke-width="1.5"/>
-          <path d="M365 195v10M475 195v10" stroke="#141414" stroke-width="1.5"/>
-          <text x="420" y="190" class="svg-small" text-anchor="middle">corona</text>
-          <path class="draw" pathLength="1" d="M588 250 v130" stroke="#141414" stroke-width="1.5"/><text x="596" y="320" class="svg-small">≈3,5 m</text>
-          <path class="draw" pathLength="1" d="M270 392 h300" stroke="#141414" stroke-width="1.5"/><path d="M270 387v10M570 387v10" stroke="#141414" stroke-width="1.5"/><text x="420" y="410" class="svg-small" text-anchor="middle">≈60 m de base (hasta 100 m)</text>
-        </g>
-        <g class="casas">
-          <path d="M372 250v-20l12-11 12 11v20z" fill="#f3eee3" stroke="#141414" stroke-width="1.5"/>
-          <rect x="381" y="236" width="6" height="14" fill="#141414"/>
-          <path d="M402 250v-26l15-13 15 13v26z" fill="#f2c230" stroke="#141414" stroke-width="1.5"/>
-          <rect x="411" y="230" width="6" height="6" fill="#141414"/><rect x="420" y="238" width="6" height="12" fill="#141414"/>
-          <path d="M438 250v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="1.5"/>
-        </g>
-      </g>
-      <g id="units" data-s="4-"></g>
+    <svg viewBox="-80 0 660 500" aria-hidden="true" id="ciclo-svg">
+      <circle cx="250" cy="250" r="170" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="6 9" opacity=".5"/>
+      <path d="M250 62 a188 188 0 0 1 120 44" fill="none" stroke="#a63a2b" stroke-width="4" stroke-linecap="round"/><path d="M362 96 l12 12 l-16 4" fill="none" stroke="#a63a2b" stroke-width="4" stroke-linecap="round"/>
+      <g id="wheel"><g id="ciclo-nodos"></g></g>
+      <text id="wheel-t" x="250" y="246" class="svg-hand" text-anchor="middle">el ciclo</text>
+      <text id="wheel-s" x="250" y="278" class="svg-small" text-anchor="middle">vuelve a empezar ↻</text>
     </svg>
+    <div class="sello" data-s="6"><span>«no puede ser incluido»</span><small>Gerencia jurídica del Plan Jarillón, sobre quienes llegaron después del censo</small></div>
   </div>
   <div class="steps">
     <div class="step" data-step="0"><div class="card">
-      <h3>Esto parece una cuadra cualquiera de Cali.</h3>
-      <p>Casas, puertas y ventanas, como en cualquier barrio. Pero el terreno sobre el que están no es un terreno cualquiera.</p>
+      <h3>Un regreso que ninguna cifra oficial registra.</h3>
+      <p>Cuando se desaloja una casa del jarillón, la demolición no siempre llega el mismo día. En ese intervalo, viviendas pendientes de demolición se arriendan a familias que ya salieron una vez del dique.</p>
+      <p class="estado"><span data-e="por-verificar"></span> Hallazgo de reportería, en verificación.</p>
     </div></div>
-    <div class="step" data-step="1"><div class="card">
-      <h3>Están construidas encima de un muro.</h3>
-      <p>El jarillón es un dique de tierra de unos 3,5 metros de alto que corre <b class="count" data-to="26.1" data-dec="1" data-suf=" km">26,1 km</b> junto al río Cauca y sus canales.</p>
-      <p class="src" data-f="alc2022"></p>
-    </div></div>
-    <div class="step" data-step="2"><div class="card">
-      <h3>De un lado está el río.</h3>
-      <p>En la ola invernal de 2010-2011, el Cauca subió hasta quedar a <b>10 centímetros</b> de la corona, el borde superior del muro.</p>
-      <p class="src" data-f="alcPlan"></p>
-    </div></div>
-    <div class="step" data-step="3"><div class="card">
-      <h3>Del otro, la ciudad.</h3>
-      <p>Barrios, colegios, plantas de agua y transporte. Según la Alcaldía, <b class="count" data-to="900000" data-pre="+">+900.000</b> personas dependen de que el muro aguante.</p>
-      <p class="src" data-f="alcTramo6"></p>
-    </div></div>
-    <div class="step" data-step="4"><div class="card">
-      <h3><b class="count" data-to="8777">8.777</b> hogares vivían sobre el dique.</h3>
-      <p>Es el censo que se hizo después de la emergencia de 2010-2011. Cada casita del dibujo representa unos 88 hogares.</p>
-      <p class="src" data-f="pais2026"></p>
-    </div></div>
-    <div class="step" data-step="5"><div class="card">
-      <h3>Quince años después, <mark>3.132</mark> siguen ahí.</h3>
-      <p>Para febrero de 2026 se habían reasentado 5.645 hogares. Las casas grises ya salieron; las amarillas todavía viven sobre el muro.</p>
-      <p class="src" data-f="pais2026"></p>
+    <div class="step" data-step="1"><div class="card"><p class="card__tag" data-ciclo-n="0"></p><h3 data-ciclo-t="0"></h3><p data-ciclo-d="0"></p><p class="src" data-f="decreto480"></p></div></div>
+    <div class="step" data-step="2"><div class="card"><p class="card__tag" data-ciclo-n="1"></p><h3 data-ciclo-t="1"></h3><p data-ciclo-d="1"></p><p class="src" data-f="baudo"></p></div></div>
+    <div class="step" data-step="3"><div class="card"><p class="card__tag" data-ciclo-n="2"></p><h3 data-ciclo-t="2"></h3><p data-ciclo-d="2"></p></div></div>
+    <div class="step" data-step="4"><div class="card"><p class="card__tag" data-ciclo-n="3"></p><h3 data-ciclo-t="3"></h3><p data-ciclo-d="3"></p></div></div>
+    <div class="step" data-step="5"><div class="card"><p class="card__tag" data-ciclo-n="4"></p><h3 data-ciclo-t="4"></h3><p data-ciclo-d="4"></p><p class="fine">Reconstrucción del equipo a partir de la reportería (en verificación).</p></div></div>
+    <div class="step" data-step="6"><div class="card">
+      <h3>Quien llegó después del censo queda por fuera.</h3>
+      <p>Esas familias viven entre ruinas, sin contrato y sin derecho a reasentamiento, hasta el siguiente operativo.</p>
+      <p class="src" data-f="entrevista"></p>
     </div></div>
   </div>
 </section>
 
-<!-- ============ 02 · DÓNDE · el muro se dibuja al ritmo del scroll ============ -->
-<section class="opener" id="cap-mapa" data-cap="mapa">
+<!-- ================= 02 · PANORAMA ACTUAL ================= -->
+<section class="opener opener--alerta" id="hoy" data-cap="hoy">
   <div class="opener__in">
     <span class="opener__num">02</span>
-    <p class="opener__kicker">Capítulo dos</p>
-    <h2 class="opener__title">Dónde está</h2>
-    <p class="opener__dek">26,1 kilómetros entre la ciudad y el río.</p>
+    <p class="opener__kicker">Panorama actual</p>
+    <h2 class="opener__title">Después del terremoto</h2>
+    <p class="opener__dek">Qué le pasó al dique el 10 de agosto y cómo están hoy las cifras del Plan Jarillón.</p>
   </div>
 </section>
-<section class="scene scene--right" data-scene="mapa" data-cap="mapa" data-scrub="mapa">
+
+<section class="articulo" data-cap="hoy" aria-label="Panorama actual">
+  <div class="articulo__in">
+    <h3 class="articulo__h">«Estuvimos raspando el límite»</h3>
+    <p class="lead">El sismo del 10 de agosto de 2026, de magnitud 7,4, dejó en Cali 150 personas fallecidas certificadas, según el balance con el que la Alcaldía cerró la búsqueda en los escombros. Para el jarillón, la cifra que importa es otra: el dique se diseñó para soportar un sismo de 7,5.</p>
+    <p class="src" data-f="paisVictimas"></p>
+    <blockquote class="pull">«El jarillón se diseñó para soportar un sismo de 7,5 grados y el que ocurrió el lunes fue 7,4. Estuvimos raspando el límite».<cite>Marco Antonio Suárez Gutiérrez, director de la CVC, 12 de agosto de 2026</cite></blockquote>
+    <p class="src" data-f="occCVC"></p>
+    <p>La CVC y la Pontificia Universidad Javeriana Cali recorrieron los puntos críticos: el puente de Paso del Comercio, la estación de transferencia de la calle 50, Playa Renaciente, el paso de la carrilera y Puerto Mallarino. Su conclusión fue que el dique está íntegro, salvo una grieta en un tramo corto de la corona, en el talud que mira al río, en Paso del Comercio.</p>
+    <p class="src" data-f="paisSismo"></p>
+    <p>En la entrevista con el equipo, el coordinador del Plan dio una versión distinta en dos puntos: habló de tres grietas, no de una, y explicó cómo se repararon.</p>
+    <figure class="clip" data-audio="ortegaGrietas"></figure>
+    <aside class="nota nota--alerta cinta">
+      <p class="nota__t">Dos versiones</p>
+      <p>CVC y Javeriana: <b>una grieta</b>, en Paso del Comercio. Plan Jarillón: <b>tres grietas</b>, intervenidas con cal y arcilla. El equipo pidió a la CVC el informe técnico de la inspección y la validación del método de reparación. Este texto se actualizará con la respuesta.</p>
+    </aside>
+
+    <h3 class="articulo__h">Las cifras, a noviembre</h3>
+    <p>El último dato oficial publicado es de abril: <b>5.693 hogares reasentados</b> de 8.777 verificados, el 64,9 %. Quedaban 3.084 hogares del censo sobre el dique o sus lagunas. En la entrevista, Ortega usó una cifra anterior, 5.472 (la que la Alcaldía publicó en septiembre de 2025), y fijó una meta: llegar a 6.000 hogares reasentados este año.</p>
+    <p class="src" data-f="alcAbr2026"></p>
+    <div class="mini-cifras">
+      <div class="mini cinta"><b>97 %</b><span>del reforzamiento (25,3 de 26,1 km)</span></div>
+      <div class="mini cinta"><b>5.693</b><span>hogares reasentados (abr. 2026)</span></div>
+      <div class="mini cinta"><b>3.084</b><span>hogares del censo por reasentar</span></div>
+      <div class="mini cinta"><b>6.000</b><span>meta de reasentados para 2026, según el Plan</span></div>
+    </div>
+    <p>Faltan unos 400 metros de refuerzo: 350 en Playa Renaciente, territorio de un consejo comunitario donde se adelanta una consulta previa; 60 en el canal interceptor sur, que dependen de trasladar una estación de transferencia; y 24 en el paso de la carrilera.</p>
+    <p class="src" data-f="pais2026"></p>
+
+    <figure class="foto foto--ancha" data-foto="puertoNuevo"></figure>
+
+    <h3 class="articulo__h">El dique tampoco es una vía</h3>
+    <p>En marzo, antes del sismo, la Alcaldía cerró dos pasos vehiculares sobre el dique en Calimio Norte y Petecuy. Durante esta administración reporta más de 500 recorridos de vigilancia, 664 cambuches levantados y 28 comparendos por delitos ambientales.</p>
+    <p class="src" data-f="alcVia2026"></p>
+  </div>
+</section>
+
+<section class="scene scene--full" data-scene="brecha" data-cap="hoy" data-scrub="brecha">
+  <div class="stage stage--race">
+    <div class="race cinta-race">
+      <p class="race__year" id="r-year">2018</p>
+      <div class="race__row">
+        <p class="race__lbl"><b>El muro</b> <span>km reforzados de 26,1</span></p>
+        <div class="race__track"><div class="race__bar" id="r-obra"></div></div>
+        <p class="race__v" id="r-obra-v">0 %</p>
+      </div>
+      <div class="race__row race__row--gente">
+        <p class="race__lbl"><b>La gente</b> <span>hogares reasentados de 8.777</span></p>
+        <div class="race__track"><div class="race__bar" id="r-gente"></div><span class="race__nd" id="r-nd">sin datos públicos comparables para estos años</span></div>
+        <p class="race__v" id="r-gente-v">—</p>
+      </div>
+      <div class="race__gap" data-s="2-"><span>Brecha</span> <b>32 puntos</b></div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-step="0"><div class="card">
+      <h3>La barra negra es el muro.</h3>
+      <p>Kilómetros reforzados sobre 26,1. En 2018 iba en 29 %. En 2026, en 97 %.</p>
+      <p class="src" data-f="pais2026"></p>
+    </div></div>
+    <div class="step" data-step="1"><div class="card">
+      <h3>La roja es la gente.</h3>
+      <p>Hogares reasentados sobre los 8.777 del censo: de 60 % en 2024 a 64,9 % en abril de 2026. Para los años anteriores no encontramos cifras públicas comparables.</p>
+      <p class="src" data-f="alcAbr2026"></p>
+    </div></div>
+    <div class="step" data-step="2"><div class="card">
+      <h3>Entre las dos hay 32 puntos.</h3>
+      <p>La obra física avanzó mucho más rápido que el reasentamiento de las familias.</p>
+      <p class="fine">Porcentajes calculados por el equipo sobre una base fija de 26,1 km y 8.777 hogares.</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= 03 · CONTEXTO ================= -->
+<section class="opener" id="contexto" data-cap="contexto">
+  <div class="opener__in">
+    <span class="opener__num">03</span>
+    <p class="opener__kicker">Contexto</p>
+    <h2 class="opener__title">El muro que atrajo a la ciudad</h2>
+    <p class="opener__dek">Dónde está el jarillón y cómo llegamos hasta aquí. Empieza por escuchar la historia.</p>
+  </div>
+</section>
+
+<section class="podcast-sec" data-cap="contexto" aria-label="Pódcast">
+  <div class="articulo__in">
+    <figure class="clip clip--podcast" data-audio="podcast"></figure>
+  </div>
+</section>
+
+<section class="scene scene--right" data-scene="mapa" data-cap="contexto" data-scrub="mapa">
   <div class="stage">
     <svg viewBox="0 0 600 640" aria-hidden="true">
       <path d="M0 0 L120 0 C 90 120, 140 220, 95 330 S 120 520, 80 640 L0 640 Z" fill="#9db08a"/>
@@ -195,7 +263,7 @@
     </div></div>
     <div class="step" data-step="1"><div class="card">
       <h3>17 kilómetros junto al Cauca.</h3>
-      <p>El tramo principal, el jarillón de Aguablanca, separa los barrios del oriente del cauce del río.</p>
+      <p>El tramo principal, el jarillón de Aguablanca, separa los barrios del oriente del cauce del río. Mide unos 3,5 m de alto y 60 m de ancho, hasta 100 m en algunos sectores.</p>
       <p class="src" data-f="tiempoTramos"></p>
     </div></div>
     <div class="step" data-step="2"><div class="card">
@@ -205,29 +273,19 @@
     </div></div>
     <div class="step" data-step="3"><div class="card">
       <h3>Detrás del muro está el oriente.</h3>
-      <p>Allí, junto al dique, funciona la planta de Puerto Mallarino. Se ha reportado que de ella sale cerca del <b>80 %</b> del agua potable de Cali.</p>
-      <p class="src" data-f="occAgua"></p><p class="estado"><span data-e="con-limites"></span> En actualización con EMCALI.</p>
+      <p>Allí, junto al dique, funciona la planta de Puerto Mallarino, que abastece de agua a cerca del <b>70 %</b> de los caleños.</p>
+      <p class="src" data-f="repEmcali"></p>
     </div></div>
   </div>
 </section>
 
-<!-- ============ 03 · HISTORIA · línea de tiempo horizontal ============ -->
-<section class="opener" id="cap-historia" data-cap="historia">
-  <div class="opener__in">
-    <span class="opener__num">03</span>
-    <p class="opener__kicker">Capítulo tres</p>
-    <h2 class="opener__title">El muro que atrajo a la ciudad</h2>
-    <p class="opener__dek">De 1958 a hoy en seis momentos. Sigue bajando: el tiempo corre hacia la derecha.</p>
-  </div>
-</section>
-<section class="hscroll" data-scene="historia" data-cap="historia" data-scrub="historia" style="--n:6">
+<section class="hscroll" data-scene="historia" data-cap="contexto" data-scrub="historia" style="--n:7">
   <div class="hscroll__pin">
     <div class="hscroll__year" id="h-year" aria-hidden="true">1958</div>
     <svg class="hscroll__land" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <rect x="0" y="250" width="1200" height="70" fill="#cbb995"/>
       <g data-h="0" class="fade"><ellipse cx="180" cy="258" rx="110" ry="10" fill="#4c8fb0" opacity=".7"/><ellipse cx="460" cy="260" rx="80" ry="8" fill="#4c8fb0" opacity=".7"/><ellipse cx="660" cy="256" rx="60" ry="7" fill="#4c8fb0" opacity=".6"/>
-        <g stroke="#2f5d2e" stroke-width="3" fill="none"><path d="M90 250 l6-20 l6 20 M300 250 l5-16 l5 16 M560 250 l6-18 l6 18 M380 250 l4-12 l4 12"/></g>
-        <g fill="#5b5650"><ellipse cx="250" cy="244" rx="12" ry="6"/><ellipse cx="610" cy="244" rx="12" ry="6"/></g></g>
+        <g stroke="#2f5d2e" stroke-width="3" fill="none"><path d="M90 250 l6-20 l6 20 M300 250 l5-16 l5 16 M560 250 l6-18 l6 18 M380 250 l4-12 l4 12"/></g></g>
       <g data-h="1-" class="grow">
         <g fill="#e8dcc3" stroke="#141414" stroke-width="2">
           <path d="M30 250v-46h50v46z"/><path d="M90 250v-70h40v70z"/><path d="M140 250v-38h56v38z"/><path d="M206 250v-84h36v84z"/><path d="M252 250v-52h54v52z"/><path d="M316 250v-36h48v36z"/><path d="M374 250v-62h44v62z"/><path d="M428 250v-44h50v44z"/><path d="M488 250v-30h46v30z"/><path d="M544 250v-56h40v56z"/><path d="M594 250v-40h52v40z"/><path d="M656 250v-26h40v26z"/>
@@ -235,145 +293,348 @@
       </g>
       <rect id="h-agua" x="960" y="210" width="240" height="40" fill="#4c8fb0"/>
       <polygon points="740,250 820,120 920,120 1000,250" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
-      <g data-h="2-" class="pop"><path d="M826 120v-22l12-11 12 11v22z" fill="#f3eee3" stroke="#141414" stroke-width="2"/><path d="M856 120v-28l15-13 15 13v28z" fill="#f2c230" stroke="#141414" stroke-width="2"/><path d="M892 120v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="2"/></g>
+      <g data-h="1-5" class="pop"><path d="M826 120v-22l12-11 12 11v22z" fill="#f3eee3" stroke="#141414" stroke-width="2"/><path d="M856 120v-28l15-13 15 13v28z" fill="#f2c230" stroke="#141414" stroke-width="2"/><path d="M892 120v-18l11-10 11 10v18z" fill="#f3eee3" stroke="#141414" stroke-width="2"/></g>
       <g data-h="3" class="fade"><g fill="none" stroke="#c0392b" stroke-width="3"><circle cx="790" cy="190" r="10"/><circle cx="950" cy="200" r="10"/><circle cx="870" cy="140" r="10"/></g></g>
-      <g data-h="4" class="fade"><path d="M780 250v-16l9-8 9 8v16zM950 250v-14l8-7 8 7v14z" fill="#f2c230" stroke="#141414" stroke-width="2"/></g>
-      <g data-h="5" class="fade"><path class="crack" d="M940 196 l10 12 l-8 10 l12 14" fill="none" stroke="#141414" stroke-width="3"/></g>
+      <g data-h="4-" class="fade"><path d="M780 250v-16l9-8 9 8v16zM950 250v-14l8-7 8 7v14z" fill="#f2c230" stroke="#141414" stroke-width="2"/></g>
+      <g data-h="6" class="fade"><path class="crack" d="M900 124 l-8 14 l10 8 l-6 14" fill="none" stroke="#141414" stroke-width="3"/><path d="M860 116 h12 v-6 h8 v6" fill="#8d7d66"/></g>
       <text x="870" y="290" class="svg-small" text-anchor="middle">dique</text><text x="1100" y="290" class="svg-small" text-anchor="middle">río Cauca</text>
     </svg>
     <div class="hscroll__track" id="h-track">
       <article class="hpanel"><div class="card">
-        <p class="hpanel__date">1958</p>
+        <p class="hpanel__date">1958-1962</p>
         <h3>Un dique para secar la tierra.</h3>
-        <p>La CVC levanta el Anillo de Aguablanca. Su objetivo no era proteger una ciudad: era drenar potreros, humedales y madreviejas que el río inundaba.</p>
-        <p class="src" data-f="cvcCrecientes"></p><p class="estado"><span data-e="con-limites"></span></p>
+        <p>La CVC ejecuta el Proyecto Aguablanca: un dique en la orilla izquierda del Cauca, con canales de captación y drenaje, para recuperar unas 5.000 hectáreas inundables. No se pensó para proteger una ciudad.</p>
+        <p class="src" data-f="rivas2019"></p><p class="estado"><span data-e="con-limites"></span></p>
       </div></article>
       <article class="hpanel"><div class="card">
-        <p class="hpanel__date">Años 60 y 70</p>
-        <h3>Funcionó. Y ahí empezó la paradoja.</h3>
-        <p>La tierra seca y protegida se volvió valiosa: primero para el ganado, después para la urbanización formal y el loteo informal. Llegaron familias migrantes, muchas del Pacífico.</p>
-        <p class="src" data-f="uribe2012"></p><p class="estado"><span data-e="por-verificar"></span></p>
+        <p class="hpanel__date">Años 70 a 2000</p>
+        <h3>La tierra seca se vuelve ciudad. El muro, vivienda.</h3>
+        <p>Llegan la urbanización formal, el loteo pirata y la migración del Pacífico. Antes de 1990 vivían en el dique menos de 70 familias; en 2000 ya eran unas 11.000 personas.</p>
+        <p class="src" data-f="uribe2012"></p><p class="estado"><span data-e="con-limites"></span></p>
       </div></article>
       <article class="hpanel"><div class="card">
         <p class="hpanel__date">2010-2011</p>
         <h3>La Niña pone a prueba el muro.</h3>
-        <p>El río llega a 10 cm de la corona. Tras la emergencia se censan 8.777 hogares viviendo sobre el dique.</p>
+        <p>El río llega a 10 cm de la corona. Se fija el corte del censo de los hogares que viven sobre el dique: después de verificarlos, serán 8.777.</p>
         <p class="src" data-f="alcPlan"></p><p class="estado"><span data-e="verificado"></span></p>
       </div></article>
       <article class="hpanel"><div class="card">
         <p class="hpanel__date">2012</p>
-        <h3>Los ingenieros holandeses lo revisan.</h3>
-        <p>Puntos críticos en 3,5 de los 17 km del dique de Aguablanca: 118 rampas, 18 puntos de erosión y 12 de escombros. Nace el Plan Jarillón.</p>
-        <blockquote class="quote">«El dique fue construido hace muchos años en una época que no hubo urbanización…»<cite>Carlos Sinisterra, asesor de la Alcaldía, 2012</cite></blockquote>
-        <p class="src" data-f="holanda2"></p>
+        <h3>El diagnóstico: un dique bueno para 1958.</h3>
+        <p>Ingenieros holandeses y la Corporación OSSO encuentran 118 rampas, 18 puntos de erosión y 12 de escombros. Advierten que no está claro qué entidad debe vigilar y mantener el dique. Nace el Plan Jarillón.</p>
+        <p class="src" data-f="diag2012"></p>
+      </div></article>
+      <article class="hpanel"><div class="card">
+        <p class="hpanel__date">2016</p>
+        <h3>Las reglas del reasentamiento.</h3>
+        <p>El Decreto 0480 fija las compensaciones: vivienda de interés prioritario, carta cheque, subsidio de relocalización o de arriendo. En 2025, el Decreto 0608 actualiza su cálculo.</p>
+        <p class="src" data-f="decreto480"></p><p class="estado"><span data-e="verificado"></span></p>
       </div></article>
       <article class="hpanel"><div class="card">
         <p class="hpanel__date">2024</p>
         <h3>Tramos reforzados vuelven a ser ocupados.</h3>
-        <p>Se reporta la reinvasión de sectores ya intervenidos. La Contraloría advierte que, después de 10 años, el componente social no se ha cumplido.</p>
+        <p>La gerencia del Plan identifica reinvasiones. La Contraloría advierte que, después de 10 años, el componente social no se ha cumplido.</p>
         <p class="src" data-f="pais2024"></p><p class="estado"><span data-e="con-limites"></span></p>
       </div></article>
       <article class="hpanel"><div class="card">
         <p class="hpanel__date">2026</p>
-        <h3>La obra casi está lista. La gente, no.</h3>
-        <p>El refuerzo va en 97 % y se han reasentado 5.645 de 8.777 hogares. En agosto, un sismo de magnitud 7,4 sacude la región: el dique sigue íntegro, con una fisura en Paso del Comercio.</p>
-        <p class="src" data-f="pais2026"></p><p class="src" data-f="paisSismo"></p>
+        <h3>El sismo y el regreso.</h3>
+        <p>Obra al 97 %, 5.693 hogares reasentados. El 10 de agosto, un sismo de 7,4 deja una grieta en Paso del Comercio. Siguen nuevas ocupaciones y escombros.</p>
+        <p class="src" data-f="paisSismo"></p>
       </div></article>
     </div>
     <div class="hscroll__ruler" aria-hidden="true">
       <div class="hscroll__fill" id="h-fill"></div>
-      <span>1958</span><span>60-70</span><span>2011</span><span>2012</span><span>2024</span><span>2026</span>
+      <span>1958</span><span>70-00</span><span>2011</span><span>2012</span><span>2016</span><span>2024</span><span>2026</span>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 · CÓMO FALLA · plano técnico ============ -->
-<section class="opener opener--plano" id="cap-anatomia" data-cap="anatomia">
+<!-- ================= 04 · PANORAMA AMBIENTAL ================= -->
+<section class="opener opener--plano" id="ambiente" data-cap="ambiente">
   <div class="opener__in">
     <span class="opener__num">04</span>
-    <p class="opener__kicker">Capítulo cuatro</p>
-    <h2 class="opener__title">Cuatro maneras de ceder</h2>
-    <p class="opener__dek">Un dique de tierra se puede romper por arriba, por dentro, por los lados o por debajo.</p>
+    <p class="opener__kicker">Panorama ambiental</p>
+    <h2 class="opener__title">Debajo del muro había una ciénaga</h2>
+    <p class="opener__dek">El agua no se fue: cambió de lugar. Un corte del territorio, capa por capa.</p>
   </div>
 </section>
-<section class="scene scene--full plano" data-scene="anatomia" data-cap="anatomia">
+
+<section class="scene scene--right ambiente" data-scene="ambiente" data-cap="ambiente">
   <div class="stage">
-    <svg viewBox="0 0 800 470" aria-hidden="true" class="anat-svg">
+    <svg viewBox="0 160 900 440" aria-hidden="true" id="amb-svg">
       <defs>
-        <pattern id="p-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#cfe3ee" stroke-opacity=".12"/></pattern>
-        <path id="ruta-filtra" d="M560 345 C 470 350, 380 330, 300 352 L 222 356"/>
+        <pattern id="p-arena" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#d8c193"/><circle cx="3" cy="4" r="1.2" fill="#a88b5c"/><circle cx="10" cy="10" r="1" fill="#a88b5c"/></pattern>
+        <pattern id="p-grava" width="26" height="22" patternUnits="userSpaceOnUse"><rect width="26" height="22" fill="#9c8a6e"/><ellipse cx="7" cy="7" rx="5" ry="3.5" fill="#7d6c52"/><ellipse cx="19" cy="16" rx="4" ry="3" fill="#6d5d45"/></pattern>
+        <pattern id="p-limo" width="30" height="10" patternUnits="userSpaceOnUse"><rect width="30" height="10" fill="#b39468"/><path d="M0 5 h12 M16 8 h10" stroke="#9a7c52" stroke-width="1.2"/></pattern>
+        <path id="ruta-sub" d="M820 410 C 700 420, 640 440, 560 430 C 480 420, 420 440, 300 425"/>
       </defs>
-      <rect x="0" y="0" width="800" height="470" fill="url(#p-grid)"/>
-      <rect x="0" y="360" width="800" height="110" fill="#cfe3ee" fill-opacity=".08"/>
-      <line x1="0" y1="360" x2="800" y2="360" stroke="#cfe3ee" stroke-width="1.5"/>
-      <g id="suelo-ondas" class="fade" data-s="4"><path class="wobble" d="M0 395 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#f2c230" stroke-width="2"/><path class="wobble w2" d="M0 425 q20 8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#f2c230" stroke-width="2"/></g>
-      <rect id="anat-agua" x="560" y="300" width="240" height="60" fill="#4c8fb0" fill-opacity=".75"/>
-      <g id="dique-g">
-        <polygon points="200,360 320,210 460,210 580,360" fill="#cfe3ee" fill-opacity=".1" stroke="#cfe3ee" stroke-width="2.5"/>
-        <polygon id="talud" points="200,360 260,285 300,300 250,360" fill="#cfe3ee" fill-opacity=".14" stroke="#cfe3ee" stroke-width="2.5"/>
+      <rect x="0" y="0" width="900" height="330" fill="#e9f0ee"/>
+      <!-- suelo base y estratos -->
+      <rect x="0" y="330" width="900" height="270" fill="#8a7655"/>
+      <g data-s="2-" class="fade">
+        <rect x="0" y="330" width="900" height="70" fill="url(#p-limo)"/>
+        <rect x="0" y="400" width="900" height="90" fill="url(#p-arena)"/>
+        <rect x="0" y="490" width="900" height="110" fill="url(#p-grava)"/>
+        <g class="amb-tag"><rect x="14" y="350" width="150" height="26" rx="3"/><text x="24" y="368">LIMOS Y ARCILLAS</text></g>
+        <g class="amb-tag"><rect x="14" y="432" width="96" height="26" rx="3"/><text x="24" y="450">ARENAS</text></g>
+        <g class="amb-tag"><rect x="14" y="532" width="160" height="26" rx="3"/><text x="24" y="550">GRAVAS Y BLOQUES</text></g>
       </g>
-      <g class="fade" data-s="0">
-        <path class="draw" pathLength="1" d="M320 196 H460" stroke="#f2c230" stroke-width="1.5"/>
-        <text x="390" y="188" class="svg-plano" text-anchor="middle">CORONA</text>
-        <text x="600" y="250" class="svg-plano" text-anchor="middle">CARA HÚMEDA →</text>
-        <text x="180" y="250" class="svg-plano" text-anchor="middle">← CARA SECA</text>
-        <text x="390" y="420" class="svg-plano" text-anchor="middle">SUELO DE FUNDACIÓN</text>
-        <text x="690" y="290" class="svg-plano" text-anchor="middle">RÍO CAUCA</text>
-        <text x="90" y="300" class="svg-plano" text-anchor="middle">CIUDAD</text>
+      <!-- ciénaga original -->
+      <g data-s="0" class="fade">
+        <path d="M0 330 C 80 318, 160 324, 240 318 S 420 322, 520 316 S 700 322, 900 318 V 340 H 0 Z" fill="#4c8fb0" opacity=".85"/>
+        <g stroke="#2f5d2e" stroke-width="3" fill="none"><path d="M60 322 l5-22 l5 22 M140 320 l4-16 l4 16 M260 320 l6-24 l6 24 M380 320 l4-14 l4 14 M470 318 l5-20 l5 20 M610 320 l4-18 l4 18 M700 320 l5-22 l5 22"/></g>
+        <g fill="#2f5d2e"><circle cx="200" cy="300" r="16"/><circle cx="214" cy="292" r="12"/><rect x="204" y="300" width="4" height="22"/><circle cx="560" cy="296" r="18"/><circle cx="576" cy="288" r="12"/><rect x="564" y="300" width="4" height="22"/></g>
+        <text x="450" y="270" text-anchor="middle" class="svg-hand">ciénaga de Aguablanca</text>
       </g>
-      <g class="fade" data-s="1"><path class="overflow" d="M560 196 C 480 190, 420 196, 330 204 C 300 208, 290 240, 270 290" fill="none" stroke="#4c8fb0" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 10"/></g>
-      <g class="fade" data-s="2">
-        <use href="#ruta-filtra" fill="none" stroke="#4c8fb0" stroke-width="2" stroke-dasharray="3 6"/>
-        <g fill="#9cc7dc">
-          <circle r="5"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
-          <circle r="4"><animateMotion dur="2.4s" begin=".5s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
-          <circle r="6"><animateMotion dur="2.4s" begin="1s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
-          <circle r="3"><animateMotion dur="2.4s" begin="1.5s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
-          <circle r="5"><animateMotion dur="2.4s" begin="2s" repeatCount="indefinite"><mpath href="#ruta-filtra"/></animateMotion></circle>
+      <!-- ciudad del oriente -->
+      <g data-s="1-" class="grow">
+        <g fill="#f3eee3" stroke="#141414" stroke-width="2">
+          <path d="M20 330v-46h44v46z"/><path d="M70 330v-62h36v62z"/><path d="M112 330v-38h48v38z"/><path d="M166 330v-74h34v74z"/><path d="M206 330v-44h46v44z"/><path d="M258 330v-30h40v30z"/>
         </g>
-        <circle class="pulse" cx="222" cy="356" r="12" fill="#4c8fb0" fill-opacity=".5"/>
       </g>
-      <g class="fade" data-s="3"><path d="M236 300 q-30 10 -46 40" fill="none" stroke="#f2c230" stroke-width="2" stroke-dasharray="4 5"/><path d="M186 334 l4 10 l8 -8" fill="none" stroke="#f2c230" stroke-width="2"/></g>
-      <g data-s="4-" class="cols"><g stroke="#f2c230" stroke-width="5"><line x1="340" y1="215" x2="340" y2="450"/><line x1="390" y1="215" x2="390" y2="450"/><line x1="440" y1="215" x2="440" y2="450"/></g><text x="470" y="446" class="svg-plano">COLUMNAS HASTA 9 M</text></g>
-      <g class="drop" data-s="5">
-        <path d="M330 210v-20l12-11 12 11v20z" fill="#f2c230" stroke="#141414" stroke-width="2"/><path d="M370 210v-24l14-12 14 12v24z" fill="#f2c230" stroke="#141414" stroke-width="2"/>
-        <path d="M418 210 l10 -12 l8 6 l9 -10 l10 16z" fill="#a68a5e" stroke="#cfe3ee" stroke-width="1.5"/>
-        <path d="M480 262 l40 -6 l10 20 l-42 6z" fill="#a68a5e" stroke="#cfe3ee" stroke-width="1.5"/>
-        <text x="390" y="150" class="svg-plano svg-plano--alert" text-anchor="middle">CASAS · ESCOMBROS · RAMPAS</text>
+      <!-- laguna reguladora -->
+      <g data-s="1-" class="fade">
+        <path d="M320 330 C 340 352, 480 352, 500 330 Z" fill="#4c8fb0"/>
       </g>
-      <text x="790" y="24" class="svg-plano svg-plano--dim" text-anchor="end">CORTE ESQUEMÁTICO · NO A ESCALA</text>
+      <g data-s="4" class="fade">
+        <path d="M330 332 C 350 348, 470 348, 490 332 Z" fill="#5f9b47"/>
+        <g fill="#5f9b47"><circle cx="350" cy="334" r="5"/><circle cx="380" cy="338" r="6"/><circle cx="430" cy="338" r="5"/><circle cx="465" cy="335" r="6"/></g>
+        <g fill="#c9c2b6" stroke="#141414" stroke-width="1"><rect x="312" y="318" width="12" height="9"/><rect x="494" y="320" width="10" height="8"/></g>
+        <circle class="ring" cx="410" cy="338" r="30" fill="none" stroke="#f2c230" stroke-width="3"/>
+      </g>
+      <!-- dique -->
+      <g data-s="1-" class="fade" id="amb-dique">
+        <polygon points="560,330 615,248 690,248 745,330" fill="#a68a5e" stroke="#141414" stroke-width="2.5"/>
+      </g>
+      <!-- pata húmeda y río -->
+      <g data-s="1-" class="fade">
+        <path d="M752 330v-18l9-8 9 8v18z" fill="#f2c230" stroke="#141414" stroke-width="1.5"/>
+        <path d="M776 330v-14l8-7 8 7v14z" fill="#f3eee3" stroke="#141414" stroke-width="1.5"/>
+      </g>
+      <rect id="amb-rio" x="800" y="318" width="100" height="40" fill="#2f6f8f"/>
+      <path class="river-flow" d="M808 330 H 900" stroke="#9cc7dc" stroke-width="2" stroke-dasharray="6 14"/>
+      <!-- agua bajo el dique -->
+      <g data-s="3" class="fade">
+        <use href="#ruta-sub" fill="none" stroke="#2f6f8f" stroke-width="2" stroke-dasharray="3 6"/>
+        <g fill="#cfe3ee">
+          <circle r="5"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#ruta-sub"/></animateMotion></circle>
+          <circle r="4"><animateMotion dur="3s" begin=".7s" repeatCount="indefinite"><mpath href="#ruta-sub"/></animateMotion></circle>
+          <circle r="6"><animateMotion dur="3s" begin="1.4s" repeatCount="indefinite"><mpath href="#ruta-sub"/></animateMotion></circle>
+          <circle r="3"><animateMotion dur="3s" begin="2.1s" repeatCount="indefinite"><mpath href="#ruta-sub"/></animateMotion></circle>
+        </g>
+        <g fill="#2b2722"><ellipse cx="640" cy="440" rx="16" ry="6"/><ellipse cx="520" cy="428" rx="12" ry="5"/><ellipse cx="380" cy="432" rx="14" ry="5"/></g>
+        <g class="amb-tag"><rect x="560" y="462" width="210" height="26" rx="3"/><text x="570" y="480">VACÍOS QUE DEJA EL AGUA</text></g>
+      </g>
+      <!-- lo que lo debilita -->
+      <g data-s="6" class="fade amb-amenazas">
+        <path d="M640 300 h70" stroke="#1d4a60" stroke-width="6"/><circle cx="640" cy="300" r="5" fill="#1d4a60"/>
+        <g fill="#141414"><ellipse cx="600" cy="312" rx="4" ry="2.5"/><ellipse cx="608" cy="316" rx="3" ry="2"/><ellipse cx="596" cy="318" rx="3" ry="2"/></g>
+        <path d="M690 248 l20 34 h18" fill="none" stroke="#c0392b" stroke-width="3" stroke-dasharray="5 4"/>
+        <path d="M630 246 h22 v-8 h10 v8" fill="#8d7d66"/>
+        <g class="amb-tag amb-tag--alerta"><rect x="520" y="182" width="300" height="26" rx="3"/><text x="530" y="200">HORMIGA · TUBERÍAS · RAMPAS · ESCOMBROS</text></g>
+      </g>
+      <!-- planta de agua -->
+      <g data-s="7" class="pop">
+        <path d="M530 300 C 470 290, 380 270, 260 250" fill="none" stroke="#2f6f8f" stroke-width="5" stroke-dasharray="10 6" class="river-flow"/>
+        <circle cx="540" cy="290" r="22" fill="#fbf8f2" stroke="#141414" stroke-width="2.5"/>
+        <path d="M540 276c0 0-9 11-9 16a9 9 0 0018 0c0-5-9-16-9-16z" fill="#2f6f8f"/>
+        <g class="amb-tag"><rect x="300" y="184" width="290" height="26" rx="3"/><text x="310" y="202">PTAP PUERTO MALLARINO · ≈70 % DEL AGUA</text></g>
+      </g>
+      <!-- rótulos -->
+      <g data-s="1-" class="fade amb-rotulos">
+        <text x="150" y="232" text-anchor="middle" class="svg-label">Oriente de Cali</text>
+        <text x="410" y="372" text-anchor="middle" class="svg-small" data-s="1-3">laguna reguladora</text>
+        <text x="652" y="236" text-anchor="middle" class="svg-label">Dique</text>
+        <text x="850" y="300" text-anchor="middle" class="svg-label svg-rio">Río</text>
+        <text x="772" y="292" text-anchor="middle" class="svg-small">pata húmeda</text>
+      </g>
+      <text x="886" y="590" text-anchor="end" class="svg-small amb-nota">Esquema ilustrativo, no a escala</text>
     </svg>
   </div>
   <div class="steps">
-    <div class="step" data-step="0"><div class="card card--plano">
-      <p class="card__tag">Anatomía</p>
-      <h3>Un muro de tierra diseñado para la Cali de 1958.</h3>
-      <p>Tiene una corona arriba, una cara que mira al río y otra que mira a la ciudad. Cuando se construyó, el oriente no estaba urbanizado.</p>
-      <p class="src" data-f="alc2022"></p>
+    <div class="step" data-step="0"><div class="card">
+      <p class="card__tag">Antes de 1958</p>
+      <h3>Aquí había agua.</h3>
+      <p>El oriente de Cali era la ciénaga de Aguablanca: lagunas, zanjones, madreviejas y bosques que hacían parte del antiguo cauce del Cauca. El suelo era bajo y pantanoso, usado casi solo para ganado.</p>
+      <p class="src" data-f="ocampo2021"></p>
     </div></div>
-    <div class="step" data-step="1"><div class="card card--plano"><p class="card__tag">Falla 1 de 4 · por arriba</p><h3>Desbordamiento</h3><p data-txt="fallas.desborde"></p></div></div>
-    <div class="step" data-step="2"><div class="card card--plano"><p class="card__tag">Falla 2 de 4 · por dentro</p><h3>Filtración</h3><p data-txt="fallas.filtracion"></p></div></div>
-    <div class="step" data-step="3"><div class="card card--plano"><p class="card__tag">Falla 3 de 4 · por los lados</p><h3>El talud se desliza</h3><p data-txt="fallas.talud"></p></div></div>
-    <div class="step" data-step="4"><div class="card card--plano"><p class="card__tag">Falla 4 de 4 · por debajo</p><h3>Licuefacción</h3><p data-txt="fallas.licuefaccion"></p><p data-txt="puntos.columnas"></p><p class="src" data-f="occRefuerzo"></p></div></div>
-    <div class="step" data-step="5"><div class="card card--plano">
-      <p class="card__tag">Lo que lo debilita</p>
-      <h3>Lo que el muro carga encima.</h3>
-      <p>Cada vivienda implica cimientos y pozos dentro de la estructura. Los escombros que quedan tras una demolición son peso muerto. El diagnóstico de 2012 contó 118 rampas: cada corte reduce la sección que resiste al río.</p>
+    <div class="step" data-step="1"><div class="card">
+      <p class="card__tag">1958-1962</p>
+      <h3>El dique y los canales secaron la ciénaga.</h3>
+      <p>El Proyecto Aguablanca de la CVC recuperó unas 5.000 hectáreas inundables. Sobre la tierra seca creció la ciudad; del humedal quedaron lagunas como El Pondaje y Charco Azul.</p>
+      <p class="src" data-f="rivas2019"></p>
+    </div></div>
+    <div class="step" data-step="2"><div class="card">
+      <p class="card__tag">El suelo</p>
+      <h3>Un suelo que el río dejó.</h3>
+      <p>El jarillón y el oriente están sobre depósitos aluviales: arenas, gravas, bloques, arcillas y limos. Y el agua tiende a volver a donde estuvo.</p>
+      <figure class="clip clip--card" data-audio="geologoHumedales"></figure>
+    </div></div>
+    <div class="step" data-step="3"><div class="card">
+      <p class="card__tag">Por debajo</p>
+      <h3>El agua que no se ve.</h3>
+      <p>El geólogo consultado no ha visto hundimientos en el jarillón. Pero explica el mecanismo que preocupa en un dique de tierra: el agua del subsuelo arrastra partículas y deja vacíos.</p>
+      <figure class="clip clip--card" data-audio="geologoSubsuelo"></figure>
+    </div></div>
+    <div class="step" data-step="4"><div class="card">
+      <p class="card__tag">Las lagunas</p>
+      <h3>Lo que queda del humedal trabaja para la ciudad.</h3>
+      <p>El Pondaje y Charco Azul retienen el exceso de lluvia del oriente y del norte antes de evacuarlo al río. Hoy cargan buchón, residuos y ocupaciones: en mayo la Policía Ambiental impuso comparendos por basuras en su zona de protección.</p>
+      <p class="src" data-f="alcLagunas2026"></p>
+    </div></div>
+    <div class="step" data-step="5"><div class="card">
+      <p class="card__tag">La pata húmeda</p>
+      <h3>El río vuelve por su llanura.</h3>
+      <p>Entre el dique y el Cauca vive gente en zona de alto riesgo no mitigable. Según la Alcaldía, el río se desbordó sobre esa franja en 2011, 2015, 2017 y 2022, con pérdida total de enseres para cientos de familias.</p>
+      <p class="src" data-f="alcDesbordes"></p><p class="estado"><span data-e="con-limites"></span></p>
+    </div></div>
+    <div class="step" data-step="6"><div class="card">
+      <p class="card__tag">Desde adentro</p>
+      <h3>Lo que debilita al muro.</h3>
+      <p>Hormiga arriera que cava galerías, tuberías y conexiones de energía irregulares, rampas, tránsito de vehículos y escombros. El diagnóstico de 2012 ya contaba 118 rampas y 12 cruces de tubería en el dique de Aguablanca.</p>
       <p class="src" data-f="diag2012"></p>
+    </div></div>
+    <div class="step" data-step="7"><div class="card">
+      <p class="card__tag">El agua de la llave</p>
+      <h3>Detrás del dique está el agua de Cali.</h3>
+      <p>La planta de Puerto Mallarino abastece a cerca del 70 % de los caleños. En diciembre de 2024 tuvo que cerrarse por un daño en una tubería durante excavaciones en Playa Renaciente, sobre el jarillón.</p>
+      <p class="src" data-f="repEmcali"></p><p class="src" data-f="paisPTAP"></p>
     </div></div>
   </div>
 </section>
 
-<!-- ============ 05 · SI CEDE · inundación ligada al scroll + tablero ============ -->
-<section class="opener opener--alerta" id="cap-cede" data-cap="cede">
+<section class="dron-serie" aria-label="El jarillón desde el aire">
+  <div class="dron-serie__intro">
+    <p class="kicker kicker--light">Desde el aire</p>
+    <p class="dron-serie__t">Tres vuelos sobre el oriente de Cali.</p>
+  </div>
+
+  <figure class="dron">
+    <video class="dron__v" src="assets/video/dron-laguna-2020.mp4" poster="assets/img/dron-laguna-2020.jpg" muted loop playsinline preload="none" aria-label="Vista aérea de una laguna reguladora del oriente de Cali cubierta de buchón, entre barrios y una avenida."></video>
+    <figcaption class="dron__txt">
+      <p class="dron__n">01 / 03</p>
+      <p class="dron__t">Lo que queda de la ciénaga, entre barrios.</p>
+      <p class="fine fine--light">Laguna reguladora del oriente cubierta de buchón. Imagen de mayo de 2020. Video: equipo del reportaje.</p>
+    </figcaption>
+  </figure>
+
+  <figure class="dron">
+    <video class="dron__v" src="assets/video/dron-lagunas-canal.mp4" poster="assets/img/dron-lagunas-canal.jpg" muted loop playsinline preload="none" aria-label="Vista aérea de un canal junto a una avenida, con lagunas cubiertas de buchón a ambos lados, viviendas entre ellas y basura acumulada en la orilla."></video>
+    <figcaption class="dron__txt">
+      <p class="dron__n">02 / 03</p>
+      <p class="dron__t">Casas entre dos lagunas.</p>
+      <p class="fine fine--light">Canal, lagunas cubiertas de buchón y viviendas en la franja que las separa. En la orilla se acumulan residuos. Video: equipo del reportaje.</p>
+    </figcaption>
+  </figure>
+
+  <figure class="dron">
+    <video class="dron__v" src="assets/video/dron-rio-cauca.mp4" poster="assets/img/dron-rio-cauca.jpg" muted loop playsinline preload="none" aria-label="Vista aérea del río Cauca: un puente atirantado, el dique en obra con malla verde y viviendas entre el dique y el río."></video>
+    <figcaption class="dron__txt">
+      <p class="dron__n">03 / 03</p>
+      <p class="dron__t">El río, el muro y la pata húmeda.</p>
+      <p class="fine fine--light">El Cauca a un lado, los barrios al otro y, en medio, el dique en obra. Entre el muro y el río siguen las casas. Video: equipo del reportaje.</p>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ================= 05 · PANORAMA SOCIAL ================= -->
+<section class="opener opener--calido" id="social" data-cap="social">
   <div class="opener__in">
     <span class="opener__num">05</span>
-    <p class="opener__kicker">Capítulo cinco</p>
-    <h2 class="opener__title">Si el muro cede</h2>
-    <p class="opener__dek">Un escenario ilustrativo basado en el estudio de riesgo de la CVC y OSSO-Univalle.</p>
+    <p class="opener__kicker">Panorama social</p>
+    <h2 class="opener__title">Quién vive en el muro</h2>
+    <p class="opener__dek">Migración, arraigo, compensaciones y una línea de corte que deja a unos adentro y a otros afuera.</p>
   </div>
 </section>
-<section class="scene scene--full alerta" data-scene="cede" data-cap="cede" data-scrub="cede">
+
+<section class="articulo articulo--calido" data-cap="social" aria-label="Panorama social">
+  <div class="articulo__in">
+    <h3 class="articulo__h">Una ciudad hecha de migrantes</h3>
+    <p class="lead">Entre 1951 y 1964, siete de cada diez nuevos habitantes de Cali llegaron de otra parte. La ola más fuerte, entre 1950 y 1980, formó el Distrito de Aguablanca, en buena parte con familias de Chocó, Cauca, Nariño y Buenaventura.</p>
+    <p class="src" data-f="rivas2019"></p>
+    <p>El dique fue el último borde disponible. Era suelo público, el punto más alto de una llanura que se inundaba y no tenía un custodio visible. Antes de 1990 vivían en él menos de 70 familias; en 2005, más de 3.000; en 2011, más de 6.000.</p>
+    <p class="src" data-f="uribe2012"></p>
+    <p>Los asentamientos no son iguales. En Brisas de un Nuevo Amanecer y Cinta Larga, ocupados en los años noventa, cerca del 60 % de los habitantes es afrodescendiente y entre el 22 % y el 25 % de las personas figura como víctima del conflicto armado. En Las Vegas, invadido en los setenta, el 82 % se identifica como mestizo y viene de Cali, el Valle y el Eje Cafetero.</p>
+    <p class="src" data-f="salazar2016"></p>
+
+    <div class="unidades cinta" aria-label="De cada 100 hogares del censo, 65 ya fueron reasentados y 35 siguen pendientes.">
+      <p class="unidades__t">De cada 100 hogares del censo…</p>
+      <div class="unidades__grid" id="unidades"></div>
+      <p class="unidades__ley"><span class="u u--fuera"></span> 65 ya salieron &nbsp; <span class="u u--dentro"></span> 35 siguen pendientes &nbsp; <span class="u u--nuevo"></span> los que llegaron después no aparecen en ninguna cuenta</p>
+      <p class="src" data-f="alcAbr2026"></p>
+    </div>
+
+    <h3 class="articulo__h">Levantar las cosas y esperar</h3>
+    <p>Una integrante del área social del Plan, que pidió reserva de su identidad, describió el primer obstáculo: hay familias que llevan 30 o 40 años en el dique y que ya saben qué hacer cuando el río se sale: «Ya saben que levantan sus cositas, nos acomodamos y que el río va». La investigación académica sobre el reasentamiento en Llano Verde encontró lo mismo: los habitantes aceptan el riesgo mientras no haya muertos.</p>
+    <p class="src" data-f="entSocial"></p><p class="src" data-f="ruiz2023"></p>
+    <p>La misma fuente explica la paradoja de un Estado que está y no está. Como son asentamientos ilegales, la Alcaldía no puede poner alumbrado ni construir una cancha en el dique; su intervención se limita a lo social: informar a las familias sobre sus derechos y acompañarlas cuando salen.</p>
+
+    <h3 class="articulo__h">Reasentar no es solo reubicar</h3>
+    <p>Las compensaciones están fijadas en el Decreto 0480 de 2016, actualizado en 2025: vivienda de interés prioritario, carta cheque (135 familias la habían recibido en abril), subsidio de relocalización y subsidio de arriendo, con garantías adicionales para adultos mayores y víctimas del conflicto. El Plan dice acompañar a cada familia durante dos años después del traslado.</p>
+    <p class="src" data-f="decreto480"></p><p class="src" data-f="alcAbr2026"></p><p class="src" data-f="entSocial"></p>
+    <p>Los estudios sobre el proceso muestran costos que la vivienda no compensa. En Llano Verde, los investigadores de Univalle encontraron apoyos discontinuos, familias que sintieron el proyecto como impuesto, pérdida de ingresos de quienes tenían negocios o criaban animales y apartamentos pequeños para familias extensas. Otra tesis reciente concluye que las viviendas se ubicaron en suelos baratos, lejos de los centros de empleo y, a veces, otra vez en zonas inundables.</p>
+    <p class="src" data-f="ruiz2023"></p><p class="src" data-f="valencia2025"></p>
+
+    <figure class="foto" data-foto="vivienda"></figure>
+
+    <h3 class="articulo__h">Playa Renaciente: la consulta previa</h3>
+    <p>Los últimos 350 metros sin reforzar están en Playa Renaciente, territorio de un consejo comunitario afrodescendiente. Allí el reasentamiento no se decide por decreto: exige una consulta previa. La investigadora Figueroa Gómez documentó cómo en esta comunidad el Estado tiende a imponer su propia definición de riesgo, mientras la gente construye sus propios argumentos para defender el territorio.</p>
+    <p class="src" data-f="figueroa2016"></p>
+
+    <h3 class="articulo__h">Guardianes del jarillón</h3>
+    <p>Para evitar que los tramos liberados vuelvan a ocuparse, el Plan apuesta por la gobernanza: huertas comunitarias en 4.913 metros cuadrados del dique, recorridos y la estrategia «Guardianes del Jarillón», con habitantes formados para cuidar la estructura. El caso que el Plan muestra como ejemplo es Ramalí, en Calimio Norte, donde viven 200 familias reasentadas en 2015.</p>
+    <figure class="clip" data-audio="gobernanza"></figure>
+    <p class="src" data-f="alcVia2026"></p><p class="src" data-f="alcRamali"></p>
+  </div>
+</section>
+
+<!-- ================= 06 · CHATBOT ================= -->
+<section class="pregunta" id="pregunta" data-cap="pregunta">
+  <div class="wrap pregunta__grid">
+    <div class="pregunta__intro">
+      <p class="kicker">06 · Asistente del reportaje</p>
+      <h2 class="sec-title">Conoce todo sobre el jarillón</h2>
+      <p class="pregunta__lead">«Pregúntale al Jarillón» responde solo con la información verificada de este reportaje, y cada respuesta trae su fuente.</p>
+      <p class="chat__aviso">No reemplaza los canales oficiales: en emergencia, llama al <strong>123</strong>.</p>
+    </div>
+    <div class="chat" id="chat">
+      <div class="chat__log" id="chat-log" aria-live="polite"></div>
+      <div class="chat__sug" id="chat-sug"></div>
+      <form class="chat__form" id="chat-form" autocomplete="off">
+        <label for="chat-input" class="sr-only">Escribe tu pregunta</label>
+        <input id="chat-input" type="text" placeholder="Escribe tu pregunta sobre el jarillón…" maxlength="300">
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 · HISTORIAS DE VIDA ================= -->
+<section class="historias" id="historias" data-cap="historias">
+  <div class="wrap">
+    <p class="kicker">07 · Historias de vida</p>
+    <h2 class="sec-title">Vivir en la pata húmeda</h2>
+    <p class="historias__lead">Para las familias que viven entre el dique y el río, la creciente no es un escenario: es algo que ya pasó. Estas imágenes son de inundaciones recientes en sectores del jarillón.</p>
+    <div class="historias__grid" id="historias-grid" hidden></div>
+    <div class="ensayo">
+      <figure class="foto" data-foto="brisas"></figure>
+      <figure class="foto" data-foto="juanchito"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 · PROYECCIONES Y CONSECUENCIAS ================= -->
+<section class="opener opener--alerta" id="proyecciones" data-cap="proyecciones">
+  <div class="opener__in">
+    <span class="opener__num">08</span>
+    <p class="opener__kicker">Proyecciones y consecuencias</p>
+    <h2 class="opener__title">Si el muro cede</h2>
+    <p class="opener__dek">Un escenario ilustrativo basado en el estudio de riesgo de la CVC y OSSO-Univalle, y lo que falta para que no ocurra.</p>
+  </div>
+</section>
+
+<section class="scene scene--full alerta" data-scene="cede" data-cap="proyecciones" data-scrub="cede">
   <div class="stage">
     <svg viewBox="0 0 900 560" aria-hidden="true" id="cede-svg">
       <defs>
@@ -405,160 +666,53 @@
     </div></div>
     <div class="step" data-step="1"><div class="card card--dark">
       <h3>El muro se rompe frente a Puerto Mallarino.</h3>
-      <p>La misión holandesa de 2012 ubicó puntos críticos cerca de esta planta, de la PTAR Cañaveralejo, de Alfonso López y de Navarro.</p>
+      <p>Es uno de los puntos que la misión holandesa de 2012 marcó como críticos, junto a la PTAR Cañaveralejo, Alfonso López y Navarro.</p>
       <p class="src" data-f="diag2012"></p>
     </div></div>
     <div class="step" data-step="2"><div class="card card--dark">
       <h3>Primero, el agua de la llave.</h3>
-      <p>La planta de agua potable queda bajo el agua. Las estaciones de bombeo, que sacan la lluvia del oriente hacia el río, dejan de funcionar.</p>
-      <p class="src" data-f="occAgua"></p>
+      <p>La planta de Puerto Mallarino abastece a cerca del 70 % de los caleños. No hace falta una ruptura para cerrarla: en diciembre de 2024 bastó un daño en una tubería en Playa Renaciente.</p>
+      <p class="src" data-f="paisPTAP"></p>
     </div></div>
     <div class="step" data-step="3"><div class="card card--dark">
       <h3>Después, el resto del sistema.</h3>
-      <p>Las lagunas que regulan la lluvia, la planta de aguas residuales, los barrios y el transporte.</p>
-      <p class="src" data-f="holanda2"></p><p class="estado"><span data-e="por-verificar"></span> Impacto sobre el MIO en verificación con Metrocali.</p>
+      <p>Las estaciones de bombeo, las lagunas que regulan la lluvia, la planta de aguas residuales y los barrios.</p>
+      <p class="src" data-f="holanda2"></p>
     </div></div>
     <div class="step" data-step="4"><div class="card card--dark card--big">
       <p class="big-n"><b class="count" data-to="12293" data-suf=" ha">12.293 ha</b></p>
-      <p>inundadas en Cali, Palmira, Candelaria y Yumbo, según el estudio de la CVC y OSSO-Univalle.</p>
-      <p class="src" data-f="cvcOsso2015"></p>
-      <blockquote class="quote quote--dark">«…tendríamos por lo menos un millón de damnificados».<cite>Advertencia recogida por la Alcaldía de Cali, ago. 2022</cite></blockquote>
-      <p class="src" data-f="alcTramo6"></p>
+      <p>inundadas en Cali, Palmira, Candelaria y Yumbo, según el estudio de la CVC y OSSO-Univalle. El diagnóstico de 2012 estimó las pérdidas en 1,2 % del PIB de 2011 para esta creciente.</p>
+      <p class="src" data-f="cvcOsso2015"></p><p class="src" data-f="diag2012"></p>
     </div></div>
   </div>
 </section>
 
-<!-- ============ 06 · LA BRECHA · carrera de barras ============ -->
-<section class="opener" id="cap-brecha" data-cap="brecha">
-  <div class="opener__in">
-    <span class="opener__num">06</span>
-    <p class="opener__kicker">Capítulo seis</p>
-    <h2 class="opener__title">La brecha</h2>
-    <p class="opener__dek">Dos carreras que empezaron juntas: reforzar el muro y sacar a la gente de él.</p>
-  </div>
-</section>
-<section class="scene scene--full" data-scene="brecha" data-cap="brecha" data-scrub="brecha">
-  <div class="stage stage--race">
-    <div class="race cinta-race">
-      <p class="race__year" id="r-year">2018</p>
-      <div class="race__row">
-        <p class="race__lbl"><b>El muro</b> <span>km reforzados de 26,1</span></p>
-        <div class="race__track"><div class="race__bar" id="r-obra"></div></div>
-        <p class="race__v" id="r-obra-v">0 %</p>
-      </div>
-      <div class="race__row race__row--gente">
-        <p class="race__lbl"><b>La gente</b> <span>hogares reasentados de 8.777</span></p>
-        <div class="race__track"><div class="race__bar" id="r-gente"></div><span class="race__nd" id="r-nd">sin datos públicos para estos años</span></div>
-        <p class="race__v" id="r-gente-v">—</p>
-      </div>
-      <div class="race__gap" data-s="2-"><span>Brecha</span> <b>33 puntos</b></div>
-      <div class="race__future" data-s="3">
-        <p class="race__fut-t">Al ritmo actual, los 3.132 hogares que quedan saldrían hacia <b>2044</b>.</p>
-        <div class="race__cal" id="r-cal"></div>
-      </div>
-    </div>
-  </div>
-  <div class="steps">
-    <div class="step" data-step="0"><div class="card">
-      <h3>La barra negra es el muro.</h3>
-      <p>Kilómetros reforzados sobre 26,1. En 2018 iba en 29 %. En 2026, en 97 %.</p>
-      <p class="src" data-f="pais2026"></p>
-    </div></div>
-    <div class="step" data-step="1"><div class="card">
-      <h3>La roja es la gente.</h3>
-      <p>Hogares reasentados sobre los 8.777 del censo: de 60 % en 2024 a 64 % en 2026. Para los años anteriores no encontramos cifras públicas comparables.</p>
-      <p class="src" data-f="alcCop16"></p>
-    </div></div>
-    <div class="step" data-step="2"><div class="card">
-      <h3>Entre las dos hay 33 puntos.</h3>
-      <p>La obra física avanzó mucho más rápido que el reasentamiento de las familias.</p>
-      <p class="fine">Porcentajes calculados por el equipo sobre una base fija de 26,1 km y 8.777 hogares.</p>
-    </div></div>
-    <div class="step" data-step="3"><div class="card card--big">
-      <p class="big-n">≈<b class="count" data-to="18" data-suf=" años">18 años</b></p>
-      <p>tardaría reasentar a los 3.132 hogares que quedan, al ritmo de los últimos dos años (349 hogares).</p>
-      <p class="src" data-f="equipo"></p>
-      <p class="fine">Proyección ilustrativa: 349 hogares en 2 años son 174,5 por año; 3.132 ÷ 174,5 ≈ 17,9.</p>
-    </div></div>
+<section class="articulo" data-cap="proyecciones" aria-label="Proyecciones">
+  <div class="articulo__in">
+    <h3 class="articulo__h">Dieciocho años más</h3>
+    <p class="lead">Entre 2024 y 2026 se reasentaron 349 hogares, unos 175 por año. A ese ritmo, los 3.084 hogares del censo que siguen pendientes saldrían del dique hacia 2044. La meta del Plan para este año, 6.000 reasentados, exige más que duplicar ese paso: 307 hogares en ocho meses.</p>
+    <p class="src" data-f="equipo"></p>
+    <div class="anios cinta" aria-hidden="true"><div class="race__cal" id="r-cal"></div></div>
+    <p class="fine">Proyección ilustrativa del equipo: supone un ritmo constante y no cuenta a quienes llegaron después del censo.</p>
+
+    <h3 class="articulo__h">Reforzado no quiere decir sin riesgo</h3>
+    <p>La literatura sobre diques tiene un nombre para lo que puede pasar cuando una obra se termina: el «efecto dique». La estructura da una sensación de seguridad que estimula la ocupación de las zonas protegidas, y eso agrava las pérdidas si algún día falla. El sismo de agosto mostró que el margen existe: el diseño era para 7,5 y el sismo fue de 7,4.</p>
+    <p class="src" data-f="tobin1995"></p>
+    <p>Queda además una pregunta que el diagnóstico de 2012 dejó abierta: qué entidad vigila y mantiene el dique cuando el Plan Jarillón termine. Alejandro Echeverri Gómez, especialista en gestión urbana y territorial, propone para el equipo una autoridad permanente de custodia del corredor, con presupuesto plurianual; custodia inmediata del suelo liberado (huertas, parque lineal, guardianes); un corte de censo firme acompañado de oferta de vivienda para los nuevos hogares; y un observatorio que siga durante cinco años a las familias reasentadas para medir si se quedan, venden o regresan.</p>
+    <p class="src" data-f="echeverri"></p>
+
+    <figure class="foto foto--ancha foto--ia" data-foto="propuestaIA"></figure>
   </div>
 </section>
 
-<!-- ============ 07 · ESCOMBROS · rueda que gira ============ -->
-<section class="opener opener--calido" id="cap-escombros" data-cap="escombros">
-  <div class="opener__in">
-    <span class="opener__num">07</span>
-    <p class="opener__kicker">Capítulo siete</p>
-    <h2 class="opener__title">Arriendo entre escombros</h2>
-    <p class="opener__dek">Un ciclo que ninguna cifra oficial registra.</p>
-  </div>
-</section>
-<section class="scene scene--left calido" data-scene="escombros" data-cap="escombros">
-  <div class="stage">
-    <div class="stage-photo" data-photo="assets/img/cronica-escombros.jpg"></div>
-    <svg viewBox="-80 0 660 500" aria-hidden="true" id="ciclo-svg">
-      <circle cx="250" cy="250" r="170" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="6 9" opacity=".5"/>
-      <path d="M250 62 a188 188 0 0 1 120 44" fill="none" stroke="#a63a2b" stroke-width="4" stroke-linecap="round"/><path d="M362 96 l12 12 l-16 4" fill="none" stroke="#a63a2b" stroke-width="4" stroke-linecap="round"/>
-      <g id="wheel"><g id="ciclo-nodos"></g></g>
-      <text id="wheel-t" x="250" y="246" class="svg-hand" text-anchor="middle">el ciclo</text>
-      <text id="wheel-s" x="250" y="278" class="svg-small" text-anchor="middle">vuelve a empezar ↻</text>
-    </svg>
-    <div class="sello" data-s="6"><span>«no puede ser incluido»</span><small>Gerencia jurídica del Plan Jarillón, sobre quienes llegaron después del censo</small></div>
-  </div>
-  <div class="steps">
-    <div class="step" data-step="0"><div class="card">
-      <h3>Hay un mercado que ninguna cifra oficial registra.</h3>
-      <p>Cuando el Estado desaloja una casa del jarillón, la demolición no siempre llega el mismo día. En ese intervalo, viviendas pendientes de demolición se arriendan a familias que ya salieron una vez del dique.</p>
-      <p class="estado"><span data-e="por-verificar"></span> Hallazgo de reportería, en verificación.</p>
-    </div></div>
-    <div class="step" data-step="1"><div class="card"><p class="card__tag" data-ciclo-n="0"></p><h3 data-ciclo-t="0"></h3><p data-ciclo-d="0"></p></div></div>
-    <div class="step" data-step="2"><div class="card"><p class="card__tag" data-ciclo-n="1"></p><h3 data-ciclo-t="1"></h3><p data-ciclo-d="1"></p><p class="src" data-f="baudo"></p></div></div>
-    <div class="step" data-step="3"><div class="card"><p class="card__tag" data-ciclo-n="2"></p><h3 data-ciclo-t="2"></h3><p data-ciclo-d="2"></p></div></div>
-    <div class="step" data-step="4"><div class="card"><p class="card__tag" data-ciclo-n="3"></p><h3 data-ciclo-t="3"></h3><p data-ciclo-d="3"></p></div></div>
-    <div class="step" data-step="5"><div class="card"><p class="card__tag" data-ciclo-n="4"></p><h3 data-ciclo-t="4"></h3><p data-ciclo-d="4"></p><p class="fine">Reconstrucción del equipo a partir de la reportería (en verificación).</p></div></div>
-    <div class="step" data-step="6"><div class="card">
-      <h3>Quien llegó después del censo queda por fuera.</h3>
-      <p>El Plan Jarillón solo reconoce a los 8.777 hogares de 2010-2011. Esas familias viven entre ruinas, sin contrato y sin derecho a reasentamiento, hasta el siguiente operativo.</p>
-      <p class="src" data-f="entrevista"></p>
-    </div></div>
-  </div>
-</section>
-
-<section class="testimonios" id="testimonios" hidden>
-  <div class="wrap"><p class="kicker">Voces del jarillón</p><div class="testimonios__grid" id="testimonios-grid"></div></div>
-</section>
-
-<!-- ============ CIERRE ============ -->
 <section class="cierre dark" id="cierre">
   <div class="wrap">
     <p class="cierre__line">El muro está casi terminado: <strong>97 %</strong>.</p>
-    <p class="cierre__line">La gente que vive en él, no: <strong>64 %</strong>.</p>
-    <p class="cierre__line cierre__line--last">Y en 2011, al río le faltaron <mark>10 centímetros</mark>.</p>
-    <svg class="cierre__regla" viewBox="0 0 400 60" aria-hidden="true"><path class="draw" pathLength="1" d="M10 30 H390" stroke="#f2c230" stroke-width="3"/><g class="ticks" stroke="#f2c230" stroke-width="2"></g></svg>
+    <p class="cierre__line">La gente que vive en él, no: <strong>65 %</strong>. Y otros vuelven.</p>
+    <p class="cierre__line cierre__line--last">En agosto, el sismo fue de 7,4. El dique se diseñó para <mark>7,5</mark>.</p>
   </div>
 </section>
 
-<!-- ============ CHATBOT ============ -->
-<section class="pregunta" id="pregunta">
-  <div class="wrap pregunta__grid">
-    <div class="pregunta__intro">
-      <p class="kicker">Asistente del reportaje</p>
-      <h2 class="sec-title">¿Te quedó una pregunta?</h2>
-      <p class="pregunta__lead">«Pregúntale al Jarillón» responde solo con la información verificada de este reportaje, y cada respuesta trae su fuente.</p>
-      <p class="chat__aviso">No reemplaza los canales oficiales: en emergencia, llama al <strong>123</strong>.</p>
-    </div>
-    <div class="chat" id="chat">
-      <div class="chat__log" id="chat-log" aria-live="polite"></div>
-      <div class="chat__sug" id="chat-sug"></div>
-      <form class="chat__form" id="chat-form" autocomplete="off">
-        <label for="chat-input" class="sr-only">Escribe tu pregunta</label>
-        <input id="chat-input" type="text" placeholder="Escribe tu pregunta sobre el jarillón…" maxlength="300">
-        <button class="btn" type="submit">Enviar</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DATOS Y ARCHIVO ============ -->
 <section class="datos" id="datos">
   <div class="wrap">
     <p class="kicker">Para volver a los datos</p>
@@ -579,10 +733,11 @@
     <div>
       <p class="pie__logo">El <span>Jarillón</span> de Cali</p>
       <p>Reportaje transmedia del curso Periodismo e IA, Universidad Autónoma de Occidente, 2026.</p>
+      <p class="fine fine--light">Las transcripciones de las entrevistas se hicieron con reconocimiento automático de voz y se verificaron contra el audio. La ilustración de la sección 08 fue generada con inteligencia artificial y está rotulada.</p>
     </div>
     <div>
       <p><b>Equipo</b><br>Alejandro Guerra, Daniela Victoria, Danna Guerra y María José Dalfo.</p>
-      <p><a href="version-anterior.html">Versión con infografías interactivas →</a></p>
+      <p><a href="version-17nov.html">Versión del 17 de noviembre →</a><br><a href="version-anterior.html">Versión con infografías interactivas →</a></p>
     </div>
   </div>
 </footer>
@@ -592,6 +747,7 @@
 <script src="js/kb.js"></script>
 <script src="js/testimonios.js"></script>
 <script src="js/scrolly.js"></script>
+<script src="js/reportaje.js"></script>
 <script src="js/chatbot.js"></script>
 </body>
 </html>
