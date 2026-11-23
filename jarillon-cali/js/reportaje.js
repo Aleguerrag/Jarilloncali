@@ -32,7 +32,7 @@
       `<div class="clip__track"><div class="clip__bar" role="slider" tabindex="0" aria-label="Posición del audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="clip__fill"></div></div><span class="clip__time">0:00</span></div>` +
       (podcast
         ? `<details class="clip__tr"><summary>Leer la transcripción</summary><p>${esc(a.texto)}</p></details>`
-        : `<blockquote class="clip__q">«${esc(a.texto)}»</blockquote>`) +
+        : `<blockquote class="clip__q">"${esc(a.texto)}"</blockquote>`) +
       fuente(a.f) +
       `</div><audio preload="metadata" src="${a.src}"></audio>`;
     const au = $("audio", fig), btn = $(".clip__play", fig), fill = $(".clip__fill", fig), bar = $(".clip__bar", fig), time = $(".clip__time", fig);
@@ -97,7 +97,7 @@
       art.innerHTML =
         (t.foto ? `<img src="${t.foto}" alt="${esc(t.alt || "")}" loading="lazy">` : "") +
         `<div class="historia__body"><p class="historia__n">${esc(t.nombre || "")}</p><p class="historia__l">${esc(t.lugar || "")}</p>` +
-        (t.audio ? `<figure class="clip clip--card" data-audio="${key}"></figure>` : `<blockquote class="clip__q">«${esc(t.texto)}»</blockquote>`) +
+        (t.audio ? `<figure class="clip clip--card" data-audio="${key}"></figure>` : `<blockquote class="clip__q">"${esc(t.texto)}"</blockquote>`) +
         (t.credito ? `<p class="fine">${esc(t.credito)}</p>` : "") + `</div>`;
       hg.appendChild(art);
       const fig = $("[data-audio]", art);

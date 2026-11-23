@@ -1,5 +1,5 @@
 /* =========================================================
-   «Pregúntale al Jarillón» — chatbot del reportaje
+   \"Pregúntale al Jarillón\" — chatbot del reportaje
    Modo 1 (por defecto, sin servidor): búsqueda semántica ligera (BM25) sobre KB.
    Modo 2 (opcional): RAG con modelo de lenguaje vía el Worker de /worker,
            si CONFIG.chatEndpoint tiene una URL. Las fichas recuperadas se envían

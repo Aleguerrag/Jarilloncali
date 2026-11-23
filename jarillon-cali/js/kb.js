@@ -1,5 +1,5 @@
 /* =========================================================
-   BASE DE CONOCIMIENTO DEL CHATBOT «Pregúntale al Jarillón»
+   BASE DE CONOCIMIENTO DEL CHATBOT \"Pregúntale al Jarillón\"
    Cada ficha: id, preguntas tipo (q), palabras clave (k), respuesta (a) y fuente (f, clave de FUENTES en data.js).
    Regla: solo entra información verificada o marcada con sus límites.
    ========================================================= */
@@ -29,7 +29,7 @@ const KB = [
   { id: "ruptura", q: ["¿Qué pasaría si se rompe el jarillón?"], k: ["rompe", "ruptura", "falla", "colapso", "pasaria", "inundacion", "inundaria", "hectareas", "100 anos"],
     a: "El estudio CVC–OSSO de 2015 modeló una creciente con periodo de retorno de 100 años: una falla afectaría 12.293 hectáreas en Cali, Palmira, Candelaria y Yumbo. En Cali, la Alcaldía estima que más de 900.000 personas del oriente dependen de la protección del dique.", f: "cvcOsso2015" },
   { id: "personas", q: ["¿Cuántas personas están en riesgo?"], k: ["personas", "poblacion", "900", "habitantes", "expuestas", "damnificados", "millon"],
-    a: "La Alcaldía y el Fondo Adaptación hablan de proteger la vida de más de 900.000 personas del oriente; un funcionario llegó a decir «por lo menos un millón de damnificados» si el dique se rompe. El equipo está verificando cómo se calculó la cifra.", f: "alcTramo6" },
+    a: "La Alcaldía y el Fondo Adaptación hablan de proteger la vida de más de 900.000 personas del oriente; un funcionario llegó a decir \"por lo menos un millón de damnificados\" si el dique se rompe. El equipo está verificando cómo se calculó la cifra.", f: "alcTramo6" },
   { id: "agua", q: ["¿Me quedaría sin agua si falla el dique?"], k: ["agua", "potable", "puerto mallarino", "ptap", "acueducto", "emcali", "sin agua", "70", "80"],
     a: "La planta de Puerto Mallarino, junto al dique, abastece a cerca del 70 % de los caleños, según EMCALI. Con la planta Río Cauca, el río aporta cerca del 80 % del agua de la ciudad. En diciembre de 2024 la planta tuvo que cerrarse por un daño en una tubería durante excavaciones en Playa Renaciente, sobre el jarillón.", f: "repEmcali" },
   { id: "ptar", q: ["¿Qué pasa con las aguas residuales?"], k: ["ptar", "canaveralejo", "residuales", "alcantarillado", "saneamiento", "bombeo", "drenaje"],
@@ -43,7 +43,7 @@ const KB = [
   { id: "licuefaccion", q: ["¿Qué es la licuefacción?"], k: ["licuefaccion", "licua", "suelo", "lluvias y sismo", "columnas", "9 metros", "estatico", "dinamico"],
     a: "Si coinciden un periodo de lluvias intenso y un sismo, el suelo saturado del oriente podría perder resistencia, como si se volviera líquido, y el jarillón podría romperse. Por eso el reforzamiento incluye columnas de hasta 9 m de profundidad (estático) y refuerzo frente al empuje del agua (dinámico).", f: "alcPlan" },
   { id: "falla-modos", q: ["¿Cómo puede fallar un dique?"], k: ["como falla", "modos", "tubificacion", "filtracion", "desbordamiento", "talud", "deslizamiento"],
-    a: "Un dique de tierra puede fallar por desbordamiento (el agua lo supera), por filtración o tubificación (el agua abre un camino interno), por deslizamiento del talud o por licuefacción del suelo durante un sismo. En «Panorama ambiental» puedes ver qué lo debilita.", f: "diag2012" },
+    a: "Un dique de tierra puede fallar por desbordamiento (el agua lo supera), por filtración o tubificación (el agua abre un camino interno), por deslizamiento del talud o por licuefacción del suelo durante un sismo. En \"Panorama ambiental\" puedes ver qué lo debilita.", f: "diag2012" },
   { id: "escombros", q: ["¿Por qué son peligrosos los escombros?"], k: ["escombros", "basura", "peso", "residuos", "construccion"],
     a: "Los escombros suman peso muerto y material suelto sobre la estructura y tapan señales de daño. En enero de 2024 se reportaron 9 puntos con escombros: 4 en la cara húmeda y 5 en la corona. El diagnóstico de 2012 había contado 12.", f: "pais2024" },
   { id: "rampas", q: ["¿Qué daños tenía el dique en 2012?"], k: ["rampas", "2012", "diagnostico", "holandes", "holanda", "danos", "puntos criticos", "erosion"],

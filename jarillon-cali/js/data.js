@@ -8,7 +8,7 @@
 const FUENTES = {
   /* ---------- Alcaldía de Cali ---------- */
   alcPlan: { t: "Alcaldía de Cali, Gestión del Riesgo — Plan Jarillón de Cali", u: "https://www.cali.gov.co/gestiondelriesgo/publicaciones/167270/plan-jarillon-de-cali/" },
-  alc2022: { t: "Alcaldía de Cali — «23 de los 26,1 kilómetros del jarillón ya están reforzados» (dic. 2022)", u: "https://www.cali.gov.co/publicaciones/173344/23-de-los-261-kilometros-del-jarillon-ya-estan-reforzados/" },
+  alc2022: { t: "Alcaldía de Cali — \"23 de los 26,1 kilómetros del jarillón ya están reforzados\" (dic. 2022)", u: "https://www.cali.gov.co/publicaciones/173344/23-de-los-261-kilometros-del-jarillon-ya-estan-reforzados/" },
   alcCop16: { t: "Alcaldía de Cali — Plan Jarillón en la COP16 (16 abr. 2024)", u: "https://www.cali.gov.co/publicaciones/181122/el-plan-jarillon-de-cali-uno-de-los-esfuerzos-de-mitigacion-de-cambio-climatico-que-seran-presentados-en-la-cop16/" },
   alcTramo6: { t: "Alcaldía de Cali — Inició reforzamiento en Floralia, Comfenalco y Río Cali (ago. 2022)", u: "https://www.cali.gov.co/publicaciones/170550/inicio-reforzamiento-del-jarillon-en-floralia-comfenalco-y-rio-cali/" },
   alcSep2025: { t: "Alcaldía de Cali — Plan Jarillón y 85 familias de Samanes del Cauca (24 sep. 2025)", u: "https://www.cali.gov.co/publicaciones/189098/plan-jarillon-de-cali-y-85-familias-de-samanes-del-cauca-buscan-acuerdos-para-dejar-atras-el-riesgo-de-inundacion/" },
@@ -17,7 +17,7 @@ const FUENTES = {
   alcAbr2026: { t: "Alcaldía de Cali — Cinco familias del Plan Jarillón reasentadas en Palmira (21 abr. 2026)", u: "https://www.cali.gov.co/publicaciones/192240/cinco-familias-beneficiarias-del-plan-jarillon-fueron-reasentadas-en-palmira/" },
   alcLagunas2026: { t: "Alcaldía de Cali — Comparendos por residuos en la zona de protección de El Pondaje y Charco Azul (8 may. 2026)", u: "https://www.cali.gov.co/publicaciones/192493/policia-ambiental-impuso-comparendos-por-afectacion-con-residuos-en-zona-de-proteccion-de-las-lagunas-el-pondaje-y-charco-azul/" },
   alcDesbordes: { t: "Alcaldía de Cali — Recuperando el jarillón del río Cauca, recuperamos Cali (21 nov. 2024)", u: "https://www.cali.gov.co/publicaciones/183781/recuperando-el-jarillon-del-rio-cauca-recuperamos-cali/" },
-  alcGuardianes: { t: "Alcaldía de Cali — Cali empodera comunidades como «Guardianes del Jarillón» (18 sep. 2025)", u: "https://www.cali.gov.co/publicaciones/189000/cali-empodera-comunidades-como-guardianes-del-jarillon-gobernanza-efectiva-para-proteger-el-dique-sobre-el-rio-cauca/" },
+  alcGuardianes: { t: "Alcaldía de Cali — Cali empodera comunidades como \"Guardianes del Jarillón\" (18 sep. 2025)", u: "https://www.cali.gov.co/publicaciones/189000/cali-empodera-comunidades-como-guardianes-del-jarillon-gobernanza-efectiva-para-proteger-el-dique-sobre-el-rio-cauca/" },
   alcRamali: { t: "Alcaldía de Cali — El jarillón se convirtió en aula abierta (Ramalí, Calimio Norte, 2026)", u: "https://www.cali.gov.co/publicaciones/192270/el-jarillon-del-rio-cauca-se-convirtio-en-un-aula-abierta-para-estudiantes-de-planeacion-territorial-de-la-universidad-de-san-buenaventura/" },
   alcEmcali80: { t: "Alcaldía de Cali — EMCALI garantiza el suministro continuo de agua potable (2026)", u: "https://www.cali.gov.co/publicaciones/194072/emcali-garantiza-el-suministro-continuo-de-agua-potable-en-cali-y-descarta-racionamientos/" },
   decreto480: { t: "Alcaldía de Cali — Decreto 4110.20.0480 de 2016: compensaciones del reasentamiento del Plan Jarillón", u: "https://normagrama.cali.gov.co/compilacion/docs/pdf/d_alcacali_0480_2016.pdf" },
@@ -35,7 +35,7 @@ const FUENTES = {
   /* ---------- Prensa ---------- */
   tiempoTramos: { t: "El Tiempo — Impulso al reforzamiento del tercer tramo del jarillón", u: "https://www.eltiempo.com/colombia/cali/impulso-al-reforzamiento-de-tercer-tramo-de-jarillon-del-rio-cauca-173954" },
   tiempo2024: { t: "El Tiempo — La realidad de dos proyectos que llevan una década en veremos (20 may. 2024)", u: "https://www.eltiempo.com/colombia/cali/la-realidad-de-dos-proyectos-que-llevan-una-decada-en-veremos-uno-contra-inundaciones-y-el-otro-para-renovar-el-centro-de-cali-3343995" },
-  occRefuerzo: { t: "Occidente — «El 25 % del jarillón está reforzado» (nota de archivo)", u: "https://occidente.co/cali/el-25-del-jarillon-esta-reforzado/" },
+  occRefuerzo: { t: "Occidente — \"El 25 % del jarillón está reforzado\" (nota de archivo)", u: "https://occidente.co/cali/el-25-del-jarillon-esta-reforzado/" },
   occCVC: { t: "Occidente — Anuncian revisión del jarillón del río Cauca: director de la CVC (12 ago. 2026)", u: "https://occidente.co/cali/anuncian-revision-de-jarillon-del-rio-cauca/" },
   occEscombros: { t: "Occidente — Cali retira 99 mil toneladas de escombros tras el terremoto (sep. 2026)", u: "https://occidente.co/cali/cali-retira-99-mil-toneladas-escombros-terremoto/" },
   pais2018: { t: "El País — El jarillón puede soportar el invierno, pero sigue amenazado (2018, act. 2023)", u: "https://www.elpais.com.co/cali/el-jarillon-del-rio-cauca-puede-soportar-el-invierno-pero-sigue-amenazado.html" },
@@ -55,7 +55,7 @@ const FUENTES = {
   salazar2016: { t: "Salazar Collazos — El capital social en el reasentamiento del jarillón del río Cauca, Universidad del Valle (2016)", u: "https://bibliotecadigital.univalle.edu.co/bitstreams/ea481e60-ed05-460c-a294-cccad07b85e8/download" },
   valencia2025: { t: "Valencia Segura — Macroproyecto habitacional Plan Jarillón de Cali, FLACSO Ecuador (2025)", u: "https://repositorio.flacsoandes.edu.ec/bitstream/10469/23049/2/TFLACSO-2025KSVS.pdf" },
   ocampo2021: { t: "Ocampo-Marulanda et al. — Desecación de humedales: la ciénaga de Aguablanca, Tropical Conservation Science (2021)", u: "https://doi.org/10.1177/19400829211007075" },
-  figueroa2016: { t: "Figueroa Gómez — El río, la inundación y la «ola invernal» en Colombia 2010-2012, Encrucijadas (2016)", u: "https://recyt.fecyt.es/index.php/encrucijadas/article/view/79013" },
+  figueroa2016: { t: "Figueroa Gómez — El río, la inundación y la \"ola invernal\" en Colombia 2010-2012, Encrucijadas (2016)", u: "https://recyt.fecyt.es/index.php/encrucijadas/article/view/79013" },
   tobin1995: { t: "Tobin — The levee love affair: a stormy relationship?, Water Resources Bulletin (1995)", u: "https://doi.org/10.1111/j.1752-1688.1995.tb04025.x" },
   corte2019: { t: "Corte Constitucional — Sentencia T-547 de 2019", u: "https://www.corteconstitucional.gov.co/relatoria/2019/t-547-19.htm" },
 
@@ -65,7 +65,7 @@ const FUENTES = {
   entGeologo: { t: "Respuesta en audio de un geólogo consultado por el equipo (nov. 2026)", u: "" },
   entGobernanza: { t: "Entrevista del equipo con Juan Camilo, del área de Gobernanza del Plan Jarillón (nov. 2026)", u: "" },
   entrevista: { t: "Entrevista del equipo con la gerencia jurídica del Plan Jarillón (oct. 2026)", u: "" },
-  echeverri: { t: "Alejandro Echeverri Gómez — «El jarillón de Cali: genealogía de un muro», documento de análisis para el equipo (nov. 2026)", u: "" },
+  echeverri: { t: "Alejandro Echeverri Gómez — \"El jarillón de Cali: genealogía de un muro\", documento de análisis para el equipo (nov. 2026)", u: "" },
   reportaje: { t: "Equipo del reportaje, Periodismo e IA, UAO (2026)", u: "" },
   equipo: { t: "Cálculo propio del equipo con cifras de las fuentes citadas", u: "" }
 };
@@ -105,7 +105,7 @@ const AUDIOS = {
 
 /* ---------- FOTOS ---------- */
 const FOTOS = {
-  brisas: { src: "assets/img/brisas-del-cauca-2022.jpg", alt: "Dos hombres caminan con el agua a las rodillas entre casas de madera inundadas en Brisas del Cauca.", pie: "Brisas del Cauca, 11 de noviembre de 2022. Entre el río y el dique, la llamada «pata húmeda», el agua entra a las casas cuando el Cauca crece.", credito: "Foto: Comunicaciones Plan Jarillón, Alcaldía de Cali" },
+  brisas: { src: "assets/img/brisas-del-cauca-2022.jpg", alt: "Dos hombres caminan con el agua a las rodillas entre casas de madera inundadas en Brisas del Cauca.", pie: "Brisas del Cauca, 11 de noviembre de 2022. Entre el río y el dique, la llamada \"pata húmeda\", el agua entra a las casas cuando el Cauca crece.", credito: "Foto: Comunicaciones Plan Jarillón, Alcaldía de Cali" },
   puertoNuevo: { src: "assets/img/puerto-nuevo-inundacion.jpg", alt: "De noche, vecinos miran una calle inundada mientras dos funcionarios con botas revisan el agua.", pie: "Puerto Nuevo, mayo de 2017. Funcionarios revisan una calle inundada mientras los vecinos esperan en los andenes.", credito: "Foto: Comunicaciones Plan Jarillón, Alcaldía de Cali" },
   juanchito: { src: "assets/img/juanchito-inundacion.jpg", alt: "Tres personas cargan bultos y un tanque con el agua a la cintura frente a casas inundadas.", pie: "Juanchito, enero de 2017. Vecinos sacan lo que pueden de sus casas con el agua a la cintura.", credito: "Foto: Comunicaciones Plan Jarillón, Alcaldía de Cali" },
   vivienda: { src: "assets/img/vivienda-inundada.jpg", alt: "Un hombre con gorra azul y una prenda roja al hombro está de pie con el agua a los tobillos entre plátanos y casas de madera.", pie: "Marzo de 2022. Una vivienda junto al río, rodeada de agua y plataneras.", credito: "Foto: Comunicaciones Plan Jarillón, Alcaldía de Cali" },
@@ -143,7 +143,7 @@ const CICLO = [
   { t: "1 · La salida", d: "La familia censada sale del dique con una de las compensaciones del Decreto 0480 de 2016: vivienda, carta cheque, subsidio de relocalización o de arriendo. A veces es un acuerdo; a veces, un desalojo." },
   { t: "2 · El arriendo afuera", d: "Con subsidio de arriendo, la familia se va a otro barrio. El costo, la distancia del trabajo y la pérdida de la unidad productiva hacen difícil sostenerse. Baudó documentó que la mitad de las unidades productivas desaparece al reasentar." },
   { t: "3 · El regreso", d: "Vuelven al dique. No a su casa —ya marcada o demolida— sino a una vivienda vecina, todavía en pie, pendiente de demolición. Alguien la arrienda." },
-  { t: "4 · Vivir entre escombros", d: "Sin contrato, sin garantías y sin derecho a reasentamiento: quien llega después del censo «no puede ser incluido» en el Plan. Tras el sismo, los escombros de las demoliciones se suman al peso sobre el muro." },
+  { t: "4 · Vivir entre escombros", d: "Sin contrato, sin garantías y sin derecho a reasentamiento: quien llega después del censo \"no puede ser incluido\" en el Plan. Tras el sismo, los escombros de las demoliciones se suman al peso sobre el muro." },
   { t: "5 · El próximo desalojo", d: "Llega el operativo, se demuele la casa arrendada y la familia busca la siguiente. El ciclo vuelve a empezar." }
 ];
 

@@ -1,6 +1,6 @@
 /* =========================================================
    HISTORIAS DE VIDA (audio + foto)
-   Cada historia aparece sola en la sección «Historias de vida» cuando se
+   Cada historia aparece sola en la sección \"Historias de vida\" cuando se
    agrega a esta lista. Mientras esté vacía, la sección muestra solo el
    ensayo fotográfico.
 
@@ -11,8 +11,8 @@
      y con la voz protegida (distorsionada) antes de subir el archivo.
 
    Campos:
-   { nombre: "Nombre o descripción («Madre cabeza de hogar»)",
-     lugar: "Sector y situación («Reasentada en Ramalí, Calimio Norte»)",
+   { nombre: "Nombre o descripción (\"Madre cabeza de hogar\")",
+     lugar: "Sector y situación (\"Reasentada en Ramalí, Calimio Norte\")",
      foto: "assets/img/historia-1.jpg",     // opcional
      alt: "Descripción de la foto para lectores de pantalla",
      audio: "assets/audio/historia-1.mp3",  // opcional

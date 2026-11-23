@@ -378,7 +378,7 @@
     const g = $("#testimonios-grid");
     TESTIMONIOS.forEach((t) => {
       const fig = document.createElement("figure");
-      fig.innerHTML = `<blockquote>«${esc(t.texto)}»</blockquote><figcaption>${esc(t.quien || "")}</figcaption>`;
+      fig.innerHTML = `<blockquote>"${esc(t.texto)}"</blockquote><figcaption>${esc(t.quien || "")}</figcaption>`;
       g.appendChild(fig);
     });
     $("#testimonios").hidden = false;
