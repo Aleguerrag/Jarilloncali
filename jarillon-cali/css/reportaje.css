@@ -1,7 +1,7 @@
 /* =========================================================
    Componentes de la versión del 23 nov. 2026
    Artículos de lectura, audio, fotos, infografía ambiental,
-   unidades e historias. Todas las cajas, como notas con cinta.
+   dron, unidades e historias. Todas las cajas, como notas con cinta.
    ========================================================= */
 
 /* ---------- apertura: título largo ---------- */
@@ -97,6 +97,16 @@
 .amb-nota { fill: #f3eee3; }
 .ambiente .card__tag { color: var(--rio); }
 
+/* ---------- dron ---------- */
+.dron-serie { background: var(--noche); }
+.dron-serie__intro { padding: 12vh max(24px, var(--gut-l)) 4vh; color: var(--papel); }
+.dron-serie__t { font-family: var(--ff-t); font-weight: 900; font-size: clamp(1.8rem, 5vw, 3.2rem); line-height: 1.05; letter-spacing: -.02em; margin: .4rem 0 0; max-width: 20ch; }
+.dron { position: relative; height: 92vh; min-height: 420px; overflow: hidden; background: var(--noche); margin: 0; }
+.dron + .dron { border-top: 6px solid var(--noche); }
+.dron__v { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .85; }
+.dron__txt { position: absolute; left: max(24px, var(--gut-l)); right: max(24px, var(--gut-r)); bottom: 7vh; max-width: 36rem; color: var(--papel); text-shadow: 0 2px 14px rgba(0, 0, 0, .8); }
+.dron__n { font-family: var(--ff-t); font-weight: 800; font-size: .8rem; letter-spacing: .16em; margin: 0 0 .4rem; color: var(--guayacan); }
+.dron__t { font-family: var(--ff-t); font-weight: 900; font-size: clamp(1.6rem, 4.4vw, 2.8rem); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 .6rem; }
 .fine--light { color: #d8cfbf; }
 
 /* ---------- unidades ---------- */
@@ -144,6 +154,7 @@
 
 /* ---------- celular ---------- */
 @media (max-width: 959px) {
+  .dron { height: 70vh; }
   .articulo p { font-size: 1.03rem; }
   .articulo .lead { font-size: 1.12rem; }
   .pull { margin-inline: 0; }

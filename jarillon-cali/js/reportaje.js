@@ -113,4 +113,17 @@
   });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustarTags); else ajustarTags();
   window.addEventListener("resize", ajustarTags);
+
+  /* ---------- videos de dron: se reproducen solo cuando están a la vista ---------- */
+  const vids = $$(".dron__v");
+  if (vids.length) {
+    if (reduce) vids.forEach((v) => v.removeAttribute("loop"));
+    else {
+      const io = new IntersectionObserver((es) => es.forEach((e) => {
+        const v = e.target;
+        if (e.isIntersecting) { v.preload = "auto"; const p = v.play(); if (p) p.catch(() => {}); } else v.pause();
+      }), { threshold: .25 });
+      vids.forEach((v) => io.observe(v));
+    }
+  }
 })();
