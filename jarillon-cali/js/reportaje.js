@@ -4,7 +4,6 @@
    - Fotos con pie y crédito (FOTOS en data.js)
    - Gráfico de unidades (100 hogares)
    - Historias de vida (TESTIMONIOS en testimonios.js)
-   - Video de dron que se reproduce solo cuando está a la vista
    ========================================================= */
 (function () {
   "use strict";
@@ -114,13 +113,4 @@
   });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustarTags); else ajustarTags();
   window.addEventListener("resize", ajustarTags);
-
-  /* ---------- video de dron ---------- */
-  const v = $(".dron__v");
-  if (v) {
-    if (reduce) { v.removeAttribute("loop"); }
-    else new IntersectionObserver((es) => es.forEach((e) => {
-      if (e.isIntersecting) { v.preload = "auto"; const p = v.play(); if (p) p.catch(() => {}); } else v.pause();
-    }), { threshold: .25 }).observe(v);
-  }
 })();
