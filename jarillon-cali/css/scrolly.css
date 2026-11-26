@@ -257,7 +257,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .race__gap { font-family: var(--ff-h); font-size: 1.8rem; color: var(--rio); }
 .race__gap b { font-family: var(--ff-t); font-weight: 900; font-size: 1.6rem; }
 .race__fut-t { margin: 0 0 .6rem; font-size: .95rem; }
-.race__cal { display: grid; grid-template-columns: repeat(18, 1fr); gap: 3px; }
+.race__cal { display: grid; grid-template-columns: repeat(15, 1fr); gap: 3px; }
 .race__cal span { height: 34px; background: var(--cafe); opacity: 0; transform: scaleY(.2); transform-origin: bottom; transition: opacity .3s, transform .4s var(--ease); position: relative; }
 .race__future.on .race__cal span { opacity: 1; transform: none; }
 .race__cal span::after { content: attr(data-y); position: absolute; bottom: -1.3rem; left: 50%; transform: translateX(-50%); font-size: .6rem; color: var(--gris); font-family: var(--ff-t); font-weight: 700; }
@@ -460,3 +460,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .race__future { display: none; }
   .race__year { font-size: 3.4rem; }
 }
+
+/* Simulador de rotura (25 nov. 2026) */
+.rotura { opacity: 0; transition: opacity .5s; }
+.rotura.on { opacity: 1; }
+.rotura .ring { animation: pulso 1.6s ease-out infinite; transform-origin: center; }
+@keyframes pulso { 0% { opacity: 1; } 100% { opacity: .2; } }
+.infra-item.foco circle { stroke: #f2c230; stroke-width: 4; }

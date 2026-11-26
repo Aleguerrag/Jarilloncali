@@ -33,7 +33,6 @@
       (podcast
         ? `<details class="clip__tr"><summary>Leer la transcripción</summary><p>${esc(a.texto)}</p></details>`
         : `<blockquote class="clip__q">"${esc(a.texto)}"</blockquote>`) +
-      fuente(a.f) +
       `</div><audio preload="metadata" src="${a.src}"></audio>`;
     const au = $("audio", fig), btn = $(".clip__play", fig), fill = $(".clip__fill", fig), bar = $(".clip__bar", fig), time = $(".clip__time", fig);
     const pintar = () => {

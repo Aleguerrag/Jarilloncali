@@ -109,25 +109,45 @@
     laguna: "M-11 2q5.5 -6 11 0t11 0 M-11 7q5.5 -6 11 0t11 0",
     ptar: "M-9 -9h18v18h-18z M-5 -3h10 M-5 2h10"
   };
-  const CORTO = { ptap: "Agua potable", ptar: "Aguas residuales", bombeo: "Bombeo", lagunas: "Lagunas", barrios: "Barrios", mio: "MIO", navarro: "Navarro" };
-  const BREACH = { x: 760, y: 240 };
+  const CORTO = { ptap: "Agua potable", ptar: "Aguas residuales", bombeo: "Bombeo", lagunas: "Lagunas", barrios: "Barrios", navarro: "Navarro" };
   const gInfra = $("#infra");
   if (gInfra) INFRA.forEach((it) => {
     const g = svg("g", { class: "infra-item", transform: `translate(${it.x},${it.y})`, "data-id": it.id }, gInfra);
-    g.dataset.dist = Math.hypot(it.x - BREACH.x, it.y - BREACH.y);
-    svg("circle", { r: 24, fill: "#fbf8f2", stroke: "#141414", "stroke-width": 2.5 }, g);
+    g.dataset.x = it.x; g.dataset.y = it.y;
+    svg("circle", { r: 22, fill: "#fbf8f2", stroke: "#141414", "stroke-width": 2.5 }, g);
     const stroke = ["bomba", "laguna", "ptar"].includes(it.icon);
     svg("path", { d: ICONOS[it.icon] || ICONOS.casa, fill: stroke ? "none" : "#2f6f8f", stroke: "#2f6f8f", "stroke-width": stroke ? 2.5 : 1 }, g);
-    const t = svg("text", { y: 44, "text-anchor": "middle", class: "svg-small" }, g);
+    const t = svg("text", { y: 40, "text-anchor": "middle", class: "svg-small" }, g);
     t.textContent = CORTO[it.id] || it.t;
-    svg("path", { class: "x", d: "M-15 -15L15 15M15 -15L-15 15", stroke: "#c0392b", "stroke-width": 4 }, g);
+    svg("path", { class: "x", d: "M-14 -14L14 14M14 -14L-14 14", stroke: "#c0392b", "stroke-width": 4 }, g);
   });
+  /* Manchas de inundación. Escala del esquema, 100 px = 1 km, así que 1 ha = 100 px².
+     Cada mancha es un semicírculo apoyado en el dique con radio r = raíz(2·A/π).
+     Brecha de 30 m, 572 ha / 5 brechas ≈ 114 ha → r ≈ 85 px.
+     Seis brechas de 150 m, 3.023 ha en total. La unión de seis semicírculos a lo largo de 365 px
+     de dique cubre ≈ 365·r + π·r²/2 = 302.300 px² con r ≈ 338 px (k varía el borde de cada mancha). */
+  const gMan = $("#manchas"), gRot = $("#roturas");
+  const MANCHAS = (typeof ROTURAS !== "undefined" ? ROTURAS : []).map((ro) => {
+    const c = svg("circle", { cx: 800, cy: ro.y, r: 0 }, gMan);
+    const m = svg("g", { class: "rotura", transform: `translate(800,${ro.y})` }, gRot);
+    svg("circle", { class: "ring", r: 11, fill: "none", stroke: "#c0392b", "stroke-width": 3 }, m);
+    svg("path", { d: "M-5 -9 l9 5 l-8 5 l9 6", fill: "none", stroke: "#f3eee3", "stroke-width": 3.5 }, m);
+    const t = svg("text", { x: -16, y: 4, "text-anchor": "end", class: "svg-small svg-small--light" }, m);
+    t.textContent = ro.t;
+    return { ro, c, m, r: 0 };
+  });
+  const CEDE = [
+    { on: [], r: 0, ha: "0 ha", prof: "0 m" },
+    { on: ["alfonso"], r: 85, ha: "≈ 115 ha", prof: "hasta 1,9 m" },
+    { on: ["petecuy", "alfonso", "vallegrande", "decepaz", "navarro"], r: 85, ha: "572 ha", prof: "hasta 1,9 m" },
+    { on: ["calimio", "petecuy", "alfonso", "vallegrande", "decepaz", "navarro"], r: 338, ha: "3.023 ha", prof: "hasta 7,1 m" }
+  ];
 
   /* =========================================================
      06 · LA BRECHA — calendario de años pendientes
      ========================================================= */
   const cal = $("#r-cal");
-  if (cal) for (let y = 2027; y <= 2044; y++) {
+  if (cal) for (let y = 2027; y <= 2041; y++) {
     const s = document.createElement("span");
     s.dataset.y = y;
     s.style.transitionDelay = ((y - 2027) * 70) + "ms";
@@ -180,6 +200,25 @@
     ambiente(n) {
       setGeom($("#amb-rio"), n === 5 ? { x: 742, y: 300, width: 158, height: 58 } : { x: 800, y: 318, width: 100, height: 40 });
     },
+    cede(n) {
+      const st = CEDE[Math.min(n, CEDE.length - 1)];
+      MANCHAS.forEach((mc) => {
+        const activo = st.on.includes(mc.ro.id), to = activo ? st.r * (st.r > 100 ? (mc.ro.k || 1) : 1) : 0;
+        mc.m.classList.toggle("on", activo);
+        const from = mc.r; mc.r = to;
+        tween(from, to, 1400, (v) => mc.c.setAttribute("r", v.toFixed(1)));
+      });
+      let off = 0;
+      $$(".infra-item").forEach((g) => {
+        const x = +g.dataset.x, y = +g.dataset.y;
+        const o = MANCHAS.some((mc) => st.on.includes(mc.ro.id) && Math.hypot(x - 800, y - mc.ro.y) < st.r * .92);
+        g.classList.toggle("off", o); g.classList.toggle("foco", n === 4 && g.dataset.id === "ptap");
+        if (o) off++;
+      });
+      $("#hud-ha").textContent = st.ha;
+      $("#hud-prof").textContent = st.prof;
+      $("#hud-srv").textContent = `${off} de ${INFRA.length}`;
+    },
     escombros(n) {
       const i = n >= 1 && n <= 5 ? n - 1 : -1;
       nodos.forEach((nd, k) => nd.g.classList.toggle("on", k === i));
@@ -216,7 +255,6 @@
   const hTrack = $("#h-track"), hYear = $("#h-year"), hFill = $("#h-fill"), hScene = $("[data-scene='historia']");
   const ANIOS = [1958, 1985, 2011, 2012, 2016, 2024, 2026];
   let hIdx = -1;
-  const flood = $("#flood"), hudHa = $("#hud-ha"), hudSrv = $("#hud-srv");
   const rYear = $("#r-year"), rObra = $("#r-obra"), rObraV = $("#r-obra-v"), rGente = $("#r-gente"), rGenteV = $("#r-gente-v"), rNd = $("#r-nd");
   const serie = (arr, key, base, x) => {
     if (x <= arr[0].x) return arr[0][key] / base * 100;
@@ -260,22 +298,13 @@
         setGeom($("#h-agua"), idx === 2 ? { y: 132, height: 118 } : { y: 210, height: 40 });
       }
     },
-    cede(p) {
-      const t = clamp((p - .2) / .6);
-      const r = t * 820;
-      setGeom(flood, { r });
-      let off = 0;
-      $$(".infra-item").forEach((g) => { const o = +g.dataset.dist < r * .9; g.classList.toggle("off", o); if (o) off++; });
-      hudHa.textContent = fmt(Math.round(12293 * t)) + " ha";
-      hudSrv.textContent = `${off} de ${INFRA.length}`;
-    },
     brecha(p) {
       const t = clamp((p - .05) / .45), x = lerp(2018, 2026.15, t);
       rYear.textContent = Math.floor(x);
       const o = serie(SERIE_OBRA, "km", 26.1, x);
       rObra.style.width = o + "%"; rObraV.textContent = Math.round(o) + " %";
       if (x < SERIE_REAS[0].x) {
-        rGente.style.width = "0%"; rGenteV.textContent = "—"; rNd.style.opacity = 1;
+        rGente.style.width = "0%"; rGenteV.textContent = "0 %"; rNd.style.opacity = 1;
       } else {
         const g = serie(SERIE_REAS, "h", 8777, x);
         rGente.style.width = g + "%"; rGenteV.textContent = Math.round(g) + " %"; rNd.style.opacity = 0;
@@ -358,8 +387,7 @@
     const f = FUENTES[c.f], d = document.createElement("div");
     d.className = "cifra";
     d.innerHTML = `<span class="cifra__n">${c.pre || ""}${fmt(c.n, c.dec || 0)}${c.suf || ""}</span><span class="cifra__l">${esc(c.label)}</span>` +
-      (c.nota ? `<span class="fine">${esc(c.nota)}</span>` : "") +
-      (f ? `<p class="src">Fuente: ${f.u ? `<a href="${f.u}" target="_blank" rel="noopener">${esc(f.t)}</a>` : esc(f.t)}</p>` : "");
+      (c.nota ? `<span class="fine">${esc(c.nota)}</span>` : "");
     gridC.appendChild(d);
   });
   const list = $("#archivo-list");
